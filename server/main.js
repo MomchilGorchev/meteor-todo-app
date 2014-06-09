@@ -29,3 +29,21 @@ Meteor.startup(function () {
         }
     });
 });
+
+var users = [
+    {name:"Admin User",email:"mgorchev@powa.com",roles:['admin']}
+];
+
+/*
+users.each(users, function(user){
+    var id;
+    id = Accounts.createUser({
+        email: user.email,
+        password: user.password,
+        profile: {name: user.name}
+    })
+});
+
+if(users.roles.length > 0){
+    Roles.addUsersToRoles(id, user.roles);
+}*/
