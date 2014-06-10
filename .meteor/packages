@@ -9,8 +9,7 @@ jquery
 less
 bootstrap-3
 iron-router
-accounts-admin-ui-bootstrap-3
-accounts-ui-bootstrap-3
 jquery-ui
 accounts-password
 roles
+accounts-ui-bootstrap-3
