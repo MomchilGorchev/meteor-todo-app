@@ -1,15 +1,10 @@
-<template name="navLayout">
-    <div class="navbar navbar-default" role="navigation">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Meteor</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>{{> loginButtons }}</li>
+<template name="headerTemplate">
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a class="brand" href="/">ToDo</a>
+            <ul class="nav pull-right loginInfo">
+                <li>{{> loginButtons}}</li>
             </ul>
         </div>
-    </div>
+    </header>
 </template>
