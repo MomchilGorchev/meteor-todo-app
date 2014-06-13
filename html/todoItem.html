@@ -1,11 +1,14 @@
 <template name="todoItem">
-    <div class="col-md-12">
-        <div class="col-md-6 ">
-            <p>{{name}}</p>
-        </div>
-        <div calss="col-md-6">
-            <a href="#"><span class="fa-check-circle"></span></a>
-            <a href="#"></a>
+    <div class="col-md-12 pull-left">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <p class="pull-right">{{title}}</p>
+                <p class="pull-left>"><em>{{author}}</em> -  {{prettifyDate createdAt}}</p>
+            </div>
+            <div class="panel-body">
+
+                {{msg}}
+            </div>
         </div>
     </div>
 </template>

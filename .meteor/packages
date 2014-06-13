@@ -11,5 +11,6 @@ iron-router
 jquery-ui
 accounts-password
 roles
-accounts-ui-bootstrap-3
 scss
+accounts-ui
+moment

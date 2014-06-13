@@ -5,7 +5,11 @@
  */
 Messages = new Meteor.Collection("messages");
 Meteor.subscribe('messages');
+
 Template.app.messages = function() {
-    return Messages.find({}, {sort: {_id: -1, name: 1}});
+    return Messages.find();
 };
 
+Handlebars.registerHelper("prettifyDate", function(timestamp) {
+    return moment(new Date(timestamp)).calendar();
+});

@@ -18,8 +18,9 @@ Messages.allow({
     }
 });
 
-Meteor.publish("messages", function(){
-    return Messages.find();
+Meteor.publish("messages", function(userId){
+    console.log(this.userId);
+    return Messages.find({sort: {author: this.userId}});
 });
 
 Meteor.startup(function () {
@@ -30,9 +31,6 @@ Meteor.startup(function () {
     });
 });
 
-var users = [
-    {name:"Admin User",email:"mgorchev@powa.com",roles:['admin']}
-];
 
 /*
 users.each(users, function(user){

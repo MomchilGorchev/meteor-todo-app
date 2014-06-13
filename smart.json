@@ -4,6 +4,7 @@
     "iron-router": {},
     "jquery-ui": {},
     "accounts-ui-bootstrap-3": {},
-    "scss": {}
+    "scss": {},
+    "moment": {}
   }
 }

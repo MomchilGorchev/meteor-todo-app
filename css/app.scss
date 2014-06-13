@@ -1,8 +1,20 @@
 /* SCSS declarations go here */
 @import url(http://fonts.googleapis.com/css?family=Lato|Lobster);
 
-
+html, body{
+  height: 95%;
+}
 body{
+  .page-wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -4em;
+  }
+  .footer, .push {
+    height: 5em;
+    clear: both;
+  }
   background:#D1DBBD;
   font-family: 'Lato';
   h1{
@@ -18,10 +30,13 @@ body{
     padding: 10px;
     ul.loginInfo{
       #login-dropdown-list{
-        margin-top: 15%;
-        div.dropdown-menu{
-          left:-255%;
-        }
+        position: absolute;
+        background: ivory;
+        padding: 15px;
+        border-radius: 5px;
+        width: 260px;
+        top: 26px;
+        left: -195px;
       }
     }
     a{
@@ -34,6 +49,13 @@ body{
       span.logoText{
         font-size: 20px;
         vertical-align: middle;
+      }
+    }
+  }
+  .container{
+    .col-md-12{
+      h1{
+        text-align: center;
       }
     }
   }
