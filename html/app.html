@@ -1,7 +1,7 @@
 <template name="app">
     {{> headerTemplate}}
     <div class="container page-wrap">
-        <h1>To-Do App</h1>
+        <h1>To-Do List</h1>
         <br />
         <div class="form-group">
             <label class="control-label" for="titleField">Enter ToDo Title</label><br>
@@ -15,7 +15,7 @@
         <input type="button" value="Clear messages" id="clear" class="btn btn-warning" />
         <hr class="devider">
         <div class="container" id="holder">
-            <h3>Messages:</h3>
+            <h3>My messages:</h3>
             <div class="col-md-12">
                 {{#each messages}}
                     {{> todoItem}}

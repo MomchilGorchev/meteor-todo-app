@@ -19,8 +19,8 @@ Messages.allow({
 });
 
 Meteor.publish("messages", function(userId){
-    console.log(this.userId);
-    return Messages.find({sort: {author: this.userId}});
+    console.log(Meteor.users.find({_id: this.userId}));
+    return Messages.find({author: this.userId});
 });
 
 Meteor.startup(function () {
