@@ -5,25 +5,23 @@
  */
 
 Messages = new Meteor.Collection("messages");
-
-Messages.allow({
-    'insert': function(){
-        return true;
-    },
-    'update': function(){
-        return true;
-    },
-    'remove': function(){
-        return true;
-    }
-});
-
-Meteor.publish("messages", function(userId){
-    console.log(Meteor.users.find({_id: this.userId}));
-    return Messages.find({author: this.userId});
-});
-
 Meteor.startup(function () {
+    Messages.allow({
+        'insert': function(){
+            return true;
+        },
+        'update': function(){
+            return true;
+        },
+        'remove': function(){
+            return true;
+        }
+    });
+
+    Meteor.publish("messages", function(userId){
+        return Messages.find({author: this.userId});
+    });
+
     return Meteor.methods({
         removeAll: function () {
             return Messages.remove({});
