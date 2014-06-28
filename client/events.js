@@ -41,7 +41,7 @@ Template.app.events({
                 title = 'New ToDo';
             } else {
                 var timeStamp = new Date();
-                var result = Messages.insert({title: title, msg: msg, createdAt: timeStamp, author: Meteor.user().username});
+                var result = Messages.insert({title: title, msg: msg, createdAt: timeStamp, author: Meteor.user()._id});
                 $(textField).val('').closest('div').removeClass('has-error');
                 $(titleField).val('');
             }

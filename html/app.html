@@ -4,18 +4,18 @@
         <h1>To-Do App</h1>
         <br />
         <div class="form-group">
-            <label class="control-label" for="titleField">Enter ToDo Title</label><br>
+            <label class="control-label" for="titleField">Enter To-Do Title</label><br>
             <input id="titleField" type="text" class="form-control"/>
         </div>
         <div class="form-group">
-            <label class="control-label" for="textField">Enter new ToDo</label><br>
+            <label class="control-label" for="textField">Enter new To-Do</label><br>
             <textarea rows="4" id="textField" type="text" class="form-control"></textarea>
         </div>
         <input type="button" value="Add message" class="submit btn btn-success" />
         <input type="button" value="Clear messages" id="clear" class="btn btn-warning" />
         <hr class="devider">
         <div class="container" id="holder">
-            <h3>Messages:</h3>
+            <h3>My list:</h3>
             <div class="col-md-12">
                 {{#each messages}}
                     {{> todoItem}}
