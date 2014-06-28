@@ -65,6 +65,9 @@ body{
   .todo-item{
     .panel-footer{
       display:none;
+      a{
+        cursor: pointer;
+      }
       i{
         margin-left:20px;
       }

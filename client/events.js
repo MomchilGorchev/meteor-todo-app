@@ -41,7 +41,7 @@ Template.app.events({
                 title = 'New ToDo';
             } else {
                 var timeStamp = new Date();
-                var result = Messages.insert({title: title, msg: msg, createdAt: timeStamp, author: Meteor.user()._id});
+                var result = Messages.insert({title: title, msg: msg, createdAt: timeStamp, author: Meteor.user()._id, status: 'not-done'});
                 $(textField).val('').closest('div').removeClass('has-error');
                 $(titleField).val('');
             }
@@ -56,7 +56,7 @@ Template.app.events({
 });
 
 Template.todoItem.events({
-
+    // Show/Hide action bar
     'mouseover .todo-item': function(event, template){
         var footer = template.find('.panel-footer');
         $(footer).show();
@@ -66,5 +66,25 @@ Template.todoItem.events({
         $(footer).hide();
     },
 
-    'click '
+    // Actions handler
+    'click .action-icon': function(event, template){
+        var actionIcon = event.currentTarget.firstChild;
+        if($(actionIcon).is('.fa-check')){
+            //complete
+            console.log(this);
+            console.log('Updating...');
+            Messages.update(this._id, { $set: {'status': 'completed'}});
+            console.log(this);
+
+
+        }
+        else if($(actionIcon).is('.fa-edit')){
+            //edit
+            console.log('Edit!');
+        }
+        else if($(actionIcon).is('.fa-trash-o')){
+            //remove
+            console.log('Remove!');
+        }
+    }
 });
