@@ -3,23 +3,38 @@
     <div class="container page-wrap">
         <h1>To-Do App</h1>
         <br />
-        <div class="form-group">
-            <label class="control-label" for="titleField">Enter To-Do Title</label><br>
-            <input id="titleField" type="text" class="form-control"/>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="control-label" for="titleField">Enter To-Do Title</label><br>
+                    <input id="titleField" type="text" class="form-control"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="textField">Enter new To-Do</label><br>
+                    <textarea rows="4" id="textField" type="text" class="form-control"></textarea>
+                </div>
+                <input type="button" value="Add message" class="submit btn btn-success" />
+                <input type="button" value="Clear messages" id="clear" class="btn btn-warning" />
+            </div>
+            <div class="col-lg-6">
+                <div class="datepicker pull-left">
+                </div>
+                <div class="form-group pull-right">
+                    <label class="control-label" for="textField">Due Data</label><br>
+                    <input type="text" class="form-control date-picked" />
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" for="textField">Enter new To-Do</label><br>
-            <textarea rows="4" id="textField" type="text" class="form-control"></textarea>
-        </div>
-        <input type="button" value="Add message" class="submit btn btn-success" />
-        <input type="button" value="Clear messages" id="clear" class="btn btn-warning" />
         <hr class="devider">
-        <div class="container" id="holder">
-            <h3>My list:</h3>
-            <div class="col-md-12">
-                {{#each messages}}
+        <div class="row">
+            <div class="container" id="holder">
+                <h3>My list:</h3>
+                <div class="col-md-12">
+                    {{#each messages}}
                     {{> todoItem}}
-                {{/each}}
+                    {{/each}}
+                </div>
             </div>
         </div>
         <div class="push"></div>

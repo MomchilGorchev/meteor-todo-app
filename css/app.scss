@@ -73,4 +73,9 @@ body{
       }
     }
   }
+  .todo-completed{
+    #todo-title{
+      text-decoration: line-through;
+    }
+  }
 }

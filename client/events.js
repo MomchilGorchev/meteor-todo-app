@@ -68,23 +68,27 @@ Template.todoItem.events({
 
     // Actions handler
     'click .action-icon': function(event, template){
+        var currentItem = this._id;
         var actionIcon = event.currentTarget.firstChild;
+        var clicked =  $(event.currentTarget);
         if($(actionIcon).is('.fa-check')){
             //complete
-            console.log(this);
-            console.log('Updating...');
             Messages.update(this._id, { $set: {'status': 'completed'}});
-            console.log(this);
-
-
+            clicked.closest('.todo-item').toggleClass('todo-completed');
         }
         else if($(actionIcon).is('.fa-edit')){
             //edit
-            console.log('Edit!');
+            var thisElementBody = template.find('.panel-body');
+            $(thisElementBody).attr('contenteditable', true).focus();
+            $(thisElementBody).blur(function(){
+                $(this).attr('contenteditable', false);
+                var newMsg = $(this).html();
+                Messages.update(currentItem, { $set: {msg: newMsg}});
+            });
         }
         else if($(actionIcon).is('.fa-trash-o')){
             //remove
-            console.log('Remove!');
+            Messages.remove(currentItem);
         }
     }
 });

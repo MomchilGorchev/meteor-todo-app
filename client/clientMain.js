@@ -10,6 +10,15 @@ Template.app.messages = function() {
     return Messages.find();
 };
 
+Template.app.rendered = function(){
+  $('.datepicker').datepicker({
+      altField: '.date-picked',
+      inline: true,
+      showOtherMonths: true,
+      dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  });
+};
+
 Handlebars.registerHelper("prettifyDate", function(timestamp) {
     return moment(new Date(timestamp)).calendar();
 });
