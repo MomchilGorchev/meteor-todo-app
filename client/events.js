@@ -54,3 +54,17 @@ Template.app.events({
         Meteor.call('removeAll');
     }
 });
+
+Template.todoItem.events({
+
+    'mouseover .todo-item': function(event, template){
+        var footer = template.find('.panel-footer');
+        $(footer).show();
+    },
+    'mouseout .todo-item': function(event, template){
+        var footer = template.find('.panel-footer')
+        $(footer).hide();
+    },
+
+    'click '
+});

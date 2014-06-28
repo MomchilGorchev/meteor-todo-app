@@ -1,13 +1,17 @@
 <template name="todoItem">
     <div class="col-md-12 pull-left">
-        <div class="panel panel-success">
+        <div class="panel panel-success todo-item">
             <div class="panel-heading">
                 <p class="pull-right">{{prettifyDate createdAt}}</p>
                 <p class="pull-left>">{{title}}</p>
             </div>
             <div class="panel-body">
-
                 {{msg}}
+            </div>
+            <div class="panel-footer">
+                <i class="fa fa-2x fa-check"></i>
+                <i class="fa fa-2x fa-edit"></i>
+                <i class="fa fa-2x fa-trash-o"></i>
             </div>
         </div>
     </div>

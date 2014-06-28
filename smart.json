@@ -5,6 +5,7 @@
     "jquery-ui": {},
     "accounts-ui-bootstrap-3": {},
     "scss": {},
-    "moment": {}
+    "moment": {},
+    "fontawesome4": {}
   }
 }

@@ -1,3 +1,7 @@
 <template name="mainLayout">
-    {{> app}}
+    {{#if currentUser}}
+        {{> app}}
+    {{else}}
+        {{> notLogged}}
+    {{/if}}
 </template>
