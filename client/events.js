@@ -7,43 +7,60 @@
 Template.app.events({
     // Submit a message
     'click .submit': function(event, template){
-        var titleField = template.find('#titleField');
-        var textField = template.find('#textField');
-        var title = titleField.value;
-        var msg = textField.value;
+        var title = template.find('#titleField');
+        var msg = template.find('#textField');
+        var dueDate = template.find('#due-date');
+        var time = template.find('#daytime');
 
-        if(msg.length < 1 || $.trim(msg).length == 0){
+        if(msg.value.length < 1 || $.trim(msg.value).length == 0){
             console.log('Empty str');
-            $(textField).closest('div').addClass('has-error');
-        } else if(title.length < 1 || $.trim(title).length == 0) {
-            title = 'New ToDo';
+            $(msg).closest('div').addClass('has-error');
         } else {
+            if(title.value.length < 1 || $.trim(title.value).length == 0) {
+                title.value = 'New ToDo';
+            }
             var timeStamp = new Date();
-            console.log(Meteor.user());
-            var result = Messages.insert({title: title, msg: msg, createdAt: timeStamp, author: Meteor.user()._id});
-            $(textField).val('').closest('div').removeClass('has-error');
-            $(titleField).val('');
+            var result = Messages.insert({
+                title: title.value,
+                msg: msg.value,
+                createdAt: timeStamp,
+                author: Meteor.user()._id,
+                dueDate: dueDate.value,
+                time: time.value,
+                status: 'not-done'
+            });
+            $(msg).val('').closest('div').removeClass('has-error');
+            $(title).val('');
         }
     },
 
     // Add the message on Enter press
     'keypress #textField': function(event, template){
         if(event.which === 13){
-            var titleField = template.find('#titleField');
-            var textField = template.find('#textField');
-            var title = titleField.value;
-            var msg = textField.value;
+            var title = template.find('#titleField');
+            var msg = template.find('#textField');
+            var dueDate = template.find('#due-date');
+            var time = template.find('#daytime');
 
-            if(msg.length < 1 || $.trim(msg).length == 0){
+            if(msg.value.length < 1 || $.trim(msg).value.length == 0){
                 console.log('Empty str');
-                $(textField).closest('div').addClass('has-error');
-            } else if(title.length < 1 || $.trim(title).length == 0) {
-                title = 'New ToDo';
+                $(msg).closest('div').addClass('has-error');
             } else {
+                if(title.value.length < 1 || $.trim(title).value.length == 0) {
+                    title.value = 'New ToDo';
+                }
                 var timeStamp = new Date();
-                var result = Messages.insert({title: title, msg: msg, createdAt: timeStamp, author: Meteor.user()._id, status: 'not-done'});
-                $(textField).val('').closest('div').removeClass('has-error');
-                $(titleField).val('');
+                var result = Messages.insert({
+                    title: title.value,
+                    msg: msg.value,
+                    createdAt: timeStamp,
+                    author: Meteor.user()._id,
+                    dueDate: dueDate.value,
+                    time: time.value,
+                    status: 'not-done'
+                });
+                $(msg).val('').closest('div').removeClass('has-error');
+                $(title).val('');
             }
         }
     },

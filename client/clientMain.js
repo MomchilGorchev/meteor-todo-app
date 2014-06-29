@@ -12,7 +12,8 @@ Template.app.messages = function() {
 
 Template.app.rendered = function(){
   $('.datepicker').datepicker({
-      altField: '.date-picked',
+      dateFormat: 'dd-mm-yy',
+      altField: '#due-date',
       inline: true,
       showOtherMonths: true,
       dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']

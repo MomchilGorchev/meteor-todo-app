@@ -2,7 +2,9 @@
     <div class="col-md-12 pull-left">
         <div class="panel panel-success todo-item">
             <div class="panel-heading">
-                <p id="timestamp" class="pull-right">{{prettifyDate createdAt}}</p>
+                <p id="timestamp" class="pull-right">Created: {{prettifyDate createdAt}}<br />
+                    Due Date: {{dueDate}} at {{time}}
+                </p>
                 <p id="todo-title" class="pull-left>">{{title}}</p>
             </div>
             <div class="panel-body">

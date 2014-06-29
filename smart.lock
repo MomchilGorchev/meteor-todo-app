@@ -8,7 +8,8 @@
       "accounts-ui-bootstrap-3": {},
       "scss": {},
       "moment": {},
-      "fontawesome4": {}
+      "fontawesome4": {},
+      "bootstrap-3-timepicker": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -45,6 +46,11 @@
         "git": "https://github.com/chrismbeckett/meteor-fontawesome4.git",
         "tag": "v1.1.0",
         "commit": "7d2cb9119b7981b8f854b7051d302d4842311249"
+      },
+      "bootstrap-3-timepicker": {
+        "git": "https://github.com/ianserlin/meteor-bootstrap-timepicker.git",
+        "tag": "v0.2.5",
+        "commit": "12dd7c5dd0e67f0f307e7c5aefed74777be808f1"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

@@ -6,25 +6,38 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label class="control-label" for="titleField">Enter To-Do Title</label><br>
+                    <label class="control-label" for="titleField">Title</label><br>
                     <input id="titleField" type="text" class="form-control"/>
                 </div>
-
                 <div class="form-group">
-                    <label class="control-label" for="textField">Enter new To-Do</label><br>
-                    <textarea rows="4" id="textField" type="text" class="form-control"></textarea>
+                    <label class="control-label" for="textField">Description</label><br>
+                    <textarea  id="textField" type="text" class="form-control"></textarea>
                 </div>
-                <input type="button" value="Add message" class="submit btn btn-success" />
-                <input type="button" value="Clear messages" id="clear" class="btn btn-warning" />
+
+
+
             </div>
-            <div class="col-lg-6">
-                <div class="datepicker pull-left">
+            <div class="col-lg-6 ">
+                <div class="form-group form-right">
+                    <label class="control-label" for="due-date">Due Date</label><br>
+                    <input id="due-date" type="text" class="form-control" />
                 </div>
-                <div class="form-group pull-right">
-                    <label class="control-label" for="textField">Due Data</label><br>
-                    <input type="text" class="form-control date-picked" />
+                <div class="form-group form-right">
+                    <div class="datepicker">
+                    </div>
+                </div>
+
+
+                <div class="form-group form-right">
+                    <label class="control-label" for="daytime">Time</label><br>
+                    <input id="daytime" type="time" value="00:00" class="form-control"/>
                 </div>
             </div>
+        </div>
+        <div class="container">
+
+            <input type="button" value="Add message" class="submit btn btn-success" />
+            <input type="button" value="Clear messages" id="clear" class="btn btn-warning" />
         </div>
         <hr class="devider">
         <div class="row">

@@ -6,6 +6,7 @@
     "accounts-ui-bootstrap-3": {},
     "scss": {},
     "moment": {},
-    "fontawesome4": {}
+    "fontawesome4": {},
+    "bootstrap-3-timepicker": {}
   }
 }

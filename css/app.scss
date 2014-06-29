@@ -10,6 +10,17 @@ body{
     height: auto !important;
     height: 100%;
     margin: 0 auto -4em;
+    .row{
+      .form-right{
+        width:47%;
+        .datepicker{
+          margin-top:42px;
+        }
+      }
+      textarea{
+        height: 310px;
+      }
+    }
   }
   .footer, .push {
     height: 5em;
