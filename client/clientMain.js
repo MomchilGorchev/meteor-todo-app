@@ -7,8 +7,12 @@ Messages = new Meteor.Collection("messages");
 Meteor.subscribe('messages');
 
 Template.app.messages = function() {
-    return Messages.find();
+    //return Messages.find({status: 'not-done'});
+    return Messages.find({}, {sort: {createdAt: -1}});
 };
+//Template.app.messagesCompleted = function() {
+//    return Messages.find({status: 'completed'});
+//};
 
 Template.app.rendered = function(){
   $('.datepicker').datepicker({

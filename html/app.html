@@ -13,9 +13,6 @@
                     <label class="control-label" for="textField">Description</label><br>
                     <textarea  id="textField" type="text" class="form-control"></textarea>
                 </div>
-
-
-
             </div>
             <div class="col-lg-6 ">
                 <div class="form-group form-right">
@@ -26,29 +23,34 @@
                     <div class="datepicker">
                     </div>
                 </div>
-
-
                 <div class="form-group form-right">
                     <label class="control-label" for="daytime">Time</label><br>
                     <input id="daytime" type="time" value="00:00" class="form-control"/>
                 </div>
             </div>
         </div>
-        <div class="container">
-
+        <div class="container btn-holder">
             <input type="button" value="Add message" class="submit btn btn-success" />
             <input type="button" value="Clear messages" id="clear" class="btn btn-warning" />
         </div>
         <hr class="devider">
         <div class="row">
             <div class="container" id="holder">
-                <h3>My list:</h3>
+                <h3>Uncomplete:</h3>
                 <div class="col-md-12">
                     {{#each messages}}
                     {{> todoItem}}
                     {{/each}}
                 </div>
             </div>
+            <!--<div class="container" id="holder">-->
+                <!--<h3>Complete:</h3>-->
+                <!--<div class="col-md-12">-->
+                    <!--{{#each messagesCompleted}}-->
+                    <!--{{> todoItemCompleted}}-->
+                    <!--{{/each}}-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
         <div class="push"></div>
     </div>
