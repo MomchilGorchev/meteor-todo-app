@@ -34,23 +34,23 @@
             <input type="button" value="Clear messages" id="clear" class="btn btn-warning" />
         </div>
         <hr class="devider">
-        <div class="row">
-            <div class="container" id="holder">
-                <h3>Uncomplete:</h3>
+        <div class="container">
+            <div class="col-lg-6">
+                <h3>Uncompleted:</h3>
                 <div class="col-md-12">
                     {{#each messages}}
-                    {{> todoItem}}
+                        {{> todoItem}}
                     {{/each}}
                 </div>
             </div>
-            <!--<div class="container" id="holder">-->
-                <!--<h3>Complete:</h3>-->
-                <!--<div class="col-md-12">-->
-                    <!--{{#each messagesCompleted}}-->
-                    <!--{{> todoItemCompleted}}-->
-                    <!--{{/each}}-->
-                <!--</div>-->
-            <!--</div>-->
+            <div class="col-lg-6">
+                <h3>Completed:</h3>
+                <div class="col-md-12">
+                    {{#each messagesCompleted}}
+                        {{> todoItemCompleted}}
+                    {{/each}}
+                </div>
+            </div>
         </div>
         <div class="push"></div>
     </div>

@@ -48,8 +48,8 @@ body{
   h1{
     font-family: 'Lobster';
   }
-  #holder{
-    width: 80%;
+  #holder-completed, #holder-uncompleted{
+    width: 100%;
   }
   header.navbar{
     background: $header-background;
@@ -120,8 +120,11 @@ body{
     }
   }
   .todo-completed{
-    #todo-title{
+    .todo-title{
       text-decoration: line-through;
+    }
+    .panel-body{
+      background: url("/img/Completed_stamp.png") no-repeat top right;
     }
   }
 }
