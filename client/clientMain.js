@@ -30,3 +30,9 @@ Template.app.rendered = function(){
 Handlebars.registerHelper("prettifyDate", function(timestamp) {
     return moment(new Date(timestamp)).calendar();
 });
+
+Meteor.call('sendEmail',
+    'alice@example.com',
+    'bob@example.com',
+    'Hello from Meteor!',
+    'This is a test of Email.send.');

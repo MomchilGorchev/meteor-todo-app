@@ -3,6 +3,7 @@
  *
  * Server side collections and methods
  */
+//MAIL_URL = 'smtp://momchil.gorchev:malkamucunka50@google.com:587';
 
 Messages = new Meteor.Collection("messages");
 Meteor.startup(function () {
@@ -26,6 +27,21 @@ Meteor.startup(function () {
     return Meteor.methods({
         removeAll: function () {
             return Messages.remove({});
+        },
+
+        sendEmail: function (to, from, subject, text) {
+            check([to, from, subject, text], [String]);
+
+            // Let other method calls from the same client start running,
+            // without waiting for the email sending to complete.
+            this.unblock();
+
+            Email.send({
+                to: to,
+                from: from,
+                subject: subject,
+                text: text
+            });
         }
     });
 });
