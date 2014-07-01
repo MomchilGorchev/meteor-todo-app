@@ -3,10 +3,11 @@
  *
  * Server side collections and methods
  */
-//MAIL_URL = 'smtp://momchil.gorchev:malkamucunka50@google.com:587';
+
 
 Messages = new Meteor.Collection("messages");
 Meteor.startup(function () {
+    //process.env.MAIL_URL =  'smtp://';
     // BuildIn methods
     Messages.allow({
         'insert': function(){
