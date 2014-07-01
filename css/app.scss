@@ -21,6 +21,25 @@ html, body{
   height: 95%;
 }
 body{
+  .row{
+    .col-lg-6{
+      .desc-block{
+        position: relative;
+        #due-date{
+          position: absolute;
+          text-align: right;
+          width: 99%;
+          right: 1px;
+          top: 100px;
+          border: none;
+          border-radius: 0;
+          font-family: 'Lobster';
+          font-weight: normal;
+          cursor: default;
+        }
+      }
+    }
+  }
   .page-wrap {
     min-height: 100%;
     height: auto !important;
@@ -28,16 +47,14 @@ body{
     margin: 0 auto -4em;
     .row{
       .form-right{
-        width:47%;
-        .datepicker{
-          margin-top:42px;
-        }
+        width:57%;
       }
       textarea{
-        height: 310px;
+        height: 280px;
+        padding-top: 35px;
       }
     }
-    .container.btn-holder{
+    .btn-holder{
       input{
         background: $text-color;
         color: $header-background;
@@ -45,6 +62,12 @@ body{
         &:hover{
           background: $button-hover;
         }
+      }
+      .submit{
+        margin-left: 15px;
+      }
+      #clear{
+        margin-left: 32px;
       }
     }
   }
@@ -113,6 +136,9 @@ body{
     }
     .panel-body{
       min-height: 100px;
+      p{
+        overflow-wrap: break-word;
+      }
     }
     .panel-footer{
       display:none;
@@ -134,6 +160,9 @@ body{
     }
     .panel-body{
       background: url("/img/Completed_stamp.png") no-repeat top right;
+      p{
+        overflow-wrap: break-word;
+      }
     }
   }
 }

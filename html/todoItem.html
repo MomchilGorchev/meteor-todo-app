@@ -1,14 +1,14 @@
 <template name="todoItem">
-    <div class="col-md-12 pull-left">
+    <div class="col-md-12">
         <div class="panel panel-success todo-item">
             <div class="panel-heading">
-                <p id="timestamp" class="pull-right">Created: {{prettifyDate createdAt}}<br />
-                    Due Date: {{dueDate}} at {{time}}
+                <p class="timestamp pull-right"><strong>Created:</strong> {{prettifyDate createdAt}}<br />
+                    <strong>Due Date:</strong> {{dueDate}} at {{time}}
                 </p>
-                <p id="todo-title" class="pull-left>">{{title}}</p>
+                <p class="todo-title pull-left>">{{title}}</p>
             </div>
             <div class="panel-body">
-                {{msg}}
+                <p>{{msg}}</p>
             </div>
             <div class="panel-footer">
                 <a class="action-icon"><i class="fa fa-2x fa-check"></i></a>
@@ -20,19 +20,19 @@
 </template>
 
 <template name="todoItemCompleted">
-    <div class="col-md-12 pull-left">
+    <div class="col-md-12">
         <div class="panel panel-success todo-item todo-completed">
             <div class="panel-heading">
-                <p class="timestamp pull-right">Created: {{prettifyDate createdAt}}<br />
-                    Due Date: {{dueDate}} at {{time}}
+                <p class="timestamp pull-right"><strong>Created:</strong> {{prettifyDate createdAt}}<br />
+                    <strong>Due Date:</strong> {{dueDate}} at {{time}}
                 </p>
                 <p class="todo-title pull-left>">{{title}}</p>
             </div>
             <div class="panel-body">
-                {{msg}}
+                <p>{{msg}}</p>
             </div>
             <div class="panel-footer">
-                <a class="action-icon"><i class="fa fa-2x fa-check"></i></a>
+                <a class="action-icon"><i class="fa fa-2x fa-undo"></i></a>
                 <a class="action-icon"><i class="fa fa-2x fa-edit"></i></a>
                 <a class="action-icon"><i class="fa fa-2x fa-trash-o"></i></a>
             </div>

@@ -38,38 +38,6 @@ Template.app.events({
         }
     },
 
-    // Add the message on Enter press
-    // Same logic as the event handler before
-    'keypress #textField': function(event, template){
-        if(event.which === 13){
-            var title = template.find('#titleField');
-            var msg = template.find('#textField');
-            var dueDate = template.find('#due-date');
-            var time = template.find('#daytime');
-
-            if(msg.value.length < 1 || $.trim(msg.value).length == 0){
-                console.log('Empty str');
-                $(msg).closest('div').addClass('has-error');
-            } else {
-                if(title.value.length < 1 || $.trim(title.value).length == 0) {
-                    title.value = 'New ToDo';
-                }
-                var timeStamp = new Date();
-                var result = Messages.insert({
-                    title: title.value,
-                    msg: msg.value,
-                    createdAt: timeStamp,
-                    author: Meteor.user()._id,
-                    dueDate: dueDate.value,
-                    time: time.value,
-                    status: 'not-done'
-                });
-                $(msg).val('').closest('div').removeClass('has-error');
-                $(title).val('');
-            }
-        }
-    },
-
     // Clear the whole collection
     'click #clear': function(){
         confirm('Are you sure you want to clear all messages ?');
@@ -104,7 +72,7 @@ Template.todoItem.events({
             $(thisElementBody).attr('contenteditable', true).focus();
             $(thisElementBody).blur(function(){
                 $(this).attr('contenteditable', false);
-                var newMsg = $(this).html();
+                var newMsg = $(this).find('p').html();
                 Messages.update(currentItem, { $set: {msg: newMsg}});
             });
         }
@@ -131,7 +99,7 @@ Template.todoItemCompleted.events({
         var currentItem = this._id;
         var actionIcon = event.currentTarget.firstChild;
         var clicked =  $(event.currentTarget);
-        if($(actionIcon).is('.fa-check')){
+        if($(actionIcon).is('.fa-undo')){
             //complete
             Messages.update(this._id, { $set: {'status': 'not-done'}});
             clicked.closest('.todo-item').toggleClass('todo-completed');
@@ -142,7 +110,7 @@ Template.todoItemCompleted.events({
             $(thisElementBody).attr('contenteditable', true).focus();
             $(thisElementBody).blur(function(){
                 $(this).attr('contenteditable', false);
-                var newMsg = $(this).html();
+                var newMsg = $(this).find('p').html();
                 Messages.update(currentItem, { $set: {msg: newMsg}});
             });
         }
