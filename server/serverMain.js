@@ -6,6 +6,7 @@
 
 Messages = new Meteor.Collection("messages");
 Meteor.startup(function () {
+    // BuildIn methods
     Messages.allow({
         'insert': function(){
             return true;

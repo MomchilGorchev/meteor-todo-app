@@ -6,13 +6,16 @@
 Messages = new Meteor.Collection("messages");
 Meteor.subscribe('messages');
 
+// Return only not-completed todo-s
 Template.app.messages = function() {
     return Messages.find({status: 'not-done'}, {sort: {createdAt: -1}});
 };
+// Return only completed todo-s
 Template.app.messagesCompleted = function() {
     return Messages.find({status: 'completed'}, {sort: {createdAt: -1}});
 };
 
+// App .rendered function
 Template.app.rendered = function(){
   $('.datepicker').datepicker({
       dateFormat: 'dd-mm-yy',
@@ -23,6 +26,7 @@ Template.app.rendered = function(){
   });
 };
 
+// Prettify Date
 Handlebars.registerHelper("prettifyDate", function(timestamp) {
     return moment(new Date(timestamp)).calendar();
 });

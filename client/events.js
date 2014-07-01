@@ -7,18 +7,21 @@
 Template.app.events({
     // Submit a message
     'click .submit': function(event, template){
+        // Get the info from the fields
         var title = template.find('#titleField');
         var msg = template.find('#textField');
         var dueDate = template.find('#due-date');
         var time = template.find('#daytime');
-
+        // If there is no content in the description
         if(msg.value.length < 1 || $.trim(msg.value).length == 0){
             console.log('Empty str');
             $(msg).closest('div').addClass('has-error');
         } else {
+            // Else if the title is empty, create it with "New ToDo" title
             if(title.value.length < 1 || $.trim(title.value).length == 0) {
                 title.value = 'New ToDo';
             }
+            // Save the new message to the collection
             var timeStamp = new Date();
             var result = Messages.insert({
                 title: title.value,
@@ -29,12 +32,14 @@ Template.app.events({
                 time: time.value,
                 status: 'not-done'
             });
+            // Clear the field
             $(msg).val('').closest('div').removeClass('has-error');
             $(title).val('');
         }
     },
 
     // Add the message on Enter press
+    // Same logic as the event handler before
     'keypress #textField': function(event, template){
         if(event.which === 13){
             var title = template.find('#titleField');

@@ -1,6 +1,12 @@
 /* SCSS declarations go here */
+/**
+* Google fonts
+**/
 @import url(http://fonts.googleapis.com/css?family=Lato|Lobster);
 
+/**
+  Color declarations
+**/
 $header-background: #353F42;
 $header-border: #3E606F;
 $main-background: #A6A59B;
@@ -8,6 +14,9 @@ $text-color: #F3F5F3;
 $button-background: #038C75;
 $button-hover: #C5D6C5;
 
+/**
+  Main rules
+**/
 html, body{
   height: 95%;
 }
