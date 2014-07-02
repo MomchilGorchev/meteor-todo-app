@@ -3,7 +3,7 @@
         <div class="panel panel-success todo-item">
             <div class="panel-heading">
                 <p class="timestamp pull-right"><strong>Created:</strong> {{prettifyDate createdAt}}<br />
-                    <strong>Due Date:</strong> {{dueDate}} at {{time}}
+                    <strong>Due Date:</strong><span class="actual-date">{{dueDate}} at {{time}}</span>
                 </p>
                 <p class="todo-title pull-left>">{{title}}</p>
             </div>
@@ -24,7 +24,7 @@
         <div class="panel panel-success todo-item todo-completed">
             <div class="panel-heading">
                 <p class="timestamp pull-right"><strong>Created:</strong> {{prettifyDate createdAt}}<br />
-                    <strong>Due Date:</strong> {{dueDate}} at {{time}}
+                    <strong>Due Date:</strong><span class="actual-date">{{dueDate}} at {{time}}</span>
                 </p>
                 <p class="todo-title pull-left>">{{title}}</p>
             </div>

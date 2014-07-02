@@ -127,6 +127,9 @@ body{
     border: $main-background;
     .panel-heading{
       background: $header-background;
+      .todo-title{
+        width:50%;
+      }
       p{
         color: $text-color;
         padding: 5px;
@@ -157,6 +160,7 @@ body{
   .todo-completed{
     .todo-title{
       text-decoration: line-through;
+      width:50%;
     }
     .panel-body{
       background: url("/img/Completed_stamp.png") no-repeat top right;

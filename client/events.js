@@ -80,6 +80,30 @@ Template.todoItem.events({
             //remove
             Messages.remove(currentItem);
         }
+    },
+    // Handle edit on the title
+    'click .todo-title': function(event, template){
+        var currentItem = this._id;
+        console.log(event);
+        $(event.currentTarget).attr('contenteditable', true).focus();
+        $(event.currentTarget).blur(function(){
+            $(this).attr('contenteditable', false);
+            var newTitle = $(this).html();
+            Messages.update(currentItem, { $set: {title: newTitle}});
+        });
+    },
+    // Handle edit on the Date and time
+    'click .actual-date': function(event, template){
+        var currentItem = this._id;
+        var clicked = $(event.currentTarget);
+        $(clicked).attr('contenteditable', true).focus();
+        console.log(clicked);
+        $(clicked).blur(function(){
+            console.log($(this));
+            $(this).attr('contenteditable', false);
+            var newDeadline = $(this).html();
+            Messages.update(currentItem, { $set: {dueDate: newDeadline}});
+        });
     }
 });
 
@@ -118,5 +142,30 @@ Template.todoItemCompleted.events({
             //remove
             Messages.remove(currentItem);
         }
+    },
+    // Handle edit on the title
+    'click .todo-title': function(event, template){
+        var currentItem = this._id;
+        console.log(event);
+        $(event.currentTarget).attr('contenteditable', true).focus();
+        $(event.currentTarget).blur(function(){
+            $(this).attr('contenteditable', false);
+            var newTitle = $(this).html();
+            Messages.update(currentItem, { $set: {title: newTitle}});
+        });
+    },
+
+    // Handle edit on the Date and time
+    'click .actual-date': function(event, template){
+        var currentItem = this._id;
+        var clicked = $(event.currentTarget);
+        $(clicked).attr('contenteditable', true).focus();
+        console.log(clicked);
+        $(clicked).blur(function(){
+            console.log($(this));
+            $(this).attr('contenteditable', false);
+            var newDeadline = $(this).html();
+            Messages.update(currentItem, { $set: {dueDate: newDeadline}});
+        });
     }
 });
