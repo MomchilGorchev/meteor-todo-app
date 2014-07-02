@@ -3,9 +3,12 @@
         <div class="panel panel-success todo-item">
             <div class="panel-heading">
                 <p class="timestamp pull-right"><strong>Created:</strong> {{prettifyDate createdAt}}<br />
-                    <strong>Due Date:</strong><span class="actual-date">{{dueDate}} at {{time}}</span>
+                    <strong>Due Date:</strong>
+                    <span class="actual-date info-editable" data-token="dueDate">{{dueDate}}</span>
+                        at
+                    <span class="info-editable" data-token="time">{{time}}</span>
                 </p>
-                <p class="todo-title pull-left>">{{title}}</p>
+                <p class="todo-title info-editable" data-token="title">{{title}}</p>
             </div>
             <div class="panel-body">
                 <p>{{msg}}</p>
@@ -24,9 +27,12 @@
         <div class="panel panel-success todo-item todo-completed">
             <div class="panel-heading">
                 <p class="timestamp pull-right"><strong>Created:</strong> {{prettifyDate createdAt}}<br />
-                    <strong>Due Date:</strong><span class="actual-date">{{dueDate}} at {{time}}</span>
+                    <strong>Due Date:</strong>
+                    <span class="actual-date info-editable" data-token="dueDate">{{dueDate}}</span>
+                    at
+                    <span class="info-editable" data-token="time">{{time}}</span>
                 </p>
-                <p class="todo-title pull-left>">{{title}}</p>
+                <p class="todo-title info-editable" data-token="title">{{title}}</p>
             </div>
             <div class="panel-body">
                 <p>{{msg}}</p>

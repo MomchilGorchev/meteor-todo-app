@@ -81,29 +81,33 @@ Template.todoItem.events({
             Messages.remove(currentItem);
         }
     },
-    // Handle edit on the title
-    'click .todo-title': function(event, template){
-        var currentItem = this._id;
-        console.log(event);
-        $(event.currentTarget).attr('contenteditable', true).focus();
-        $(event.currentTarget).blur(function(){
-            $(this).attr('contenteditable', false);
-            var newTitle = $(this).html();
-            Messages.update(currentItem, { $set: {title: newTitle}});
-        });
-    },
-    // Handle edit on the Date and time
-    'click .actual-date': function(event, template){
-        var currentItem = this._id;
-        var clicked = $(event.currentTarget);
-        $(clicked).attr('contenteditable', true).focus();
-        console.log(clicked);
-        $(clicked).blur(function(){
-            console.log($(this));
-            $(this).attr('contenteditable', false);
-            var newDeadline = $(this).html();
-            Messages.update(currentItem, { $set: {dueDate: newDeadline}});
-        });
+
+    //generic edit handler
+    'click .info-editable': function(event, template){
+        var collectionItem = this._id;
+        var clicked = event.currentTarget;
+        var dataToken = $(clicked).data('token');
+        if(dataToken == 'dueDate'){
+            $(clicked).attr('contenteditable', true).focus();
+            $(clicked).blur(function(){
+                $(this).attr('contenteditable', false);
+                Messages.update(collectionItem, {$set: {dueDate: $(this).html()}})
+            });
+        }
+        else if(dataToken == 'time'){
+            $(clicked).attr('contenteditable', true).focus();
+            $(clicked).blur(function(){
+                $(this).attr('contenteditable', false);
+                Messages.update(collectionItem, {$set: {time: $(this).html()}})
+            });
+        }
+        else if(dataToken == 'title'){
+            $(clicked).attr('contenteditable', true).focus();
+            $(clicked).blur(function(){
+                $(this).attr('contenteditable', false);
+                Messages.update(collectionItem, {$set: {title: $(this).html()}})
+            });
+        }
     }
 });
 
@@ -143,29 +147,32 @@ Template.todoItemCompleted.events({
             Messages.remove(currentItem);
         }
     },
-    // Handle edit on the title
-    'click .todo-title': function(event, template){
-        var currentItem = this._id;
-        console.log(event);
-        $(event.currentTarget).attr('contenteditable', true).focus();
-        $(event.currentTarget).blur(function(){
-            $(this).attr('contenteditable', false);
-            var newTitle = $(this).html();
-            Messages.update(currentItem, { $set: {title: newTitle}});
-        });
-    },
 
-    // Handle edit on the Date and time
-    'click .actual-date': function(event, template){
-        var currentItem = this._id;
-        var clicked = $(event.currentTarget);
-        $(clicked).attr('contenteditable', true).focus();
-        console.log(clicked);
-        $(clicked).blur(function(){
-            console.log($(this));
-            $(this).attr('contenteditable', false);
-            var newDeadline = $(this).html();
-            Messages.update(currentItem, { $set: {dueDate: newDeadline}});
-        });
+    //generic edit handler
+    'click .info-editable': function(event, template){
+        var collectionItem = this._id;
+        var clicked = event.currentTarget;
+        var dataToken = $(clicked).data('token');
+        if(dataToken == 'dueDate'){
+            $(clicked).attr('contenteditable', true).focus();
+            $(clicked).blur(function(){
+                $(this).attr('contenteditable', false);
+                Messages.update(collectionItem, {$set: {dueDate: $(this).html()}})
+            });
+        }
+        else if(dataToken == 'time'){
+            $(clicked).attr('contenteditable', true).focus();
+            $(clicked).blur(function(){
+                $(this).attr('contenteditable', false);
+                Messages.update(collectionItem, {$set: {time: $(this).html()}})
+            });
+        }
+        else if(dataToken == 'title'){
+            $(clicked).attr('contenteditable', true).focus();
+            $(clicked).blur(function(){
+                $(this).attr('contenteditable', false);
+                Messages.update(collectionItem, {$set: {title: $(this).html()}})
+            });
+        }
     }
 });

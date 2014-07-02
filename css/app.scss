@@ -136,6 +136,13 @@ body{
         vertical-align: middle;
         margin-top: 0;
       }
+      .info-editable{
+        word-break: break-all;
+        &:focus{
+          background: ivory;
+          color: $header-background;
+        }
+      }
     }
     .panel-body{
       min-height: 100px;
@@ -158,9 +165,18 @@ body{
     }
   }
   .todo-completed{
-    .todo-title{
-      text-decoration: line-through;
-      width:50%;
+    .panel-heading {
+      .todo-title {
+        text-decoration: line-through;
+        width: 50%;
+      }
+      .info-editable{
+        word-break: break-all;
+        &:focus{
+          background: ivory;
+          color: $header-background;
+        }
+      }
     }
     .panel-body{
       background: url("/img/Completed_stamp.png") no-repeat top right;
