@@ -14,8 +14,26 @@ Meteor.startup(function () {
     });
 
     return Meteor.methods({
-        removeAll: function () {
-            return Messages.remove({});
+        createItem: function(newItem){
+            if(newItem){
+                Messages.insert({
+                    title: newItem.title,
+                    msg: newItem.msg,
+                    createdAt: newItem.createdAt,
+                    author: Meteor.user()._id,
+                    dueDate: newItem.dueDate,
+                    time: newItem.time,
+                    status: 'not-done'
+                });
+            }
+        },
+
+        removeItem: function(id){
+            if(id == null){
+                return Messages.remove({});
+            } else {
+                Messages.remove(id);
+            }
         },
 
         updateCollectionItem: function(data){
@@ -27,6 +45,16 @@ Meteor.startup(function () {
             }
             else if(data.token == 'title'){
                 Messages.update(data.itemId, {$set: {title: data.newValue}});
+            }
+            else if(data.token == 'complete'){
+                Messages.update(data.itemId, { $set: {status: 'completed'}});
+            }
+            else if(data.token == 'undo'){
+                Messages.update(data.itemId, { $set: {status: 'not-done'}});
+            }
+            // --
+            else if(data.token == 'edit'){
+                Messages.update(data.itemId, { $set: {msg: data.newValue}});
             }
         }
 

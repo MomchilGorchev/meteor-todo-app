@@ -26,6 +26,7 @@ Template.app.rendered = function(){
   });
 };
 
+
 // Prettify Date
 Handlebars.registerHelper("prettifyDate", function(timestamp) {
     return moment(new Date(timestamp)).calendar();

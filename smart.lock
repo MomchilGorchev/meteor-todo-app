@@ -9,7 +9,9 @@
       "scss": {},
       "moment": {},
       "fontawesome4": {},
-      "bootstrap-3-timepicker": {}
+      "bootstrap-3-timepicker": {},
+      "view-manager": {},
+      "template-animation-helper": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -29,8 +31,8 @@
       },
       "accounts-ui-bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
-        "tag": "v0.3.0-1",
-        "commit": "93ffa5d0e325dc7026de89f6d90c178fa04bdd3a"
+        "tag": "v0.3.2",
+        "commit": "8686c0d3107cf48c72a5500b027f081c7e79dbbc"
       },
       "scss": {
         "git": "https://github.com/fourseven/meteor-scss.git",
@@ -51,6 +53,16 @@
         "git": "https://github.com/ianserlin/meteor-bootstrap-timepicker.git",
         "tag": "v0.2.5",
         "commit": "12dd7c5dd0e67f0f307e7c5aefed74777be808f1"
+      },
+      "view-manager": {
+        "git": "https://github.com/frozeman/meteor-view-manager.git",
+        "tag": "v0.1.6",
+        "commit": "e689883ce22917c5254c25a661588a549c1d933c"
+      },
+      "template-animation-helper": {
+        "git": "https://github.com/frozeman/meteor-template-animation-helper.git",
+        "tag": "v1.1.4",
+        "commit": "dc979ae35b2205b222fd9c8b8b1c6a5189617d2f"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

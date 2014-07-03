@@ -12,6 +12,7 @@ Template.app.events({
         var msg = template.find('#textField');
         var dueDate = template.find('#due-date');
         var time = template.find('#daytime');
+
         // If there is no content in the description
         if(msg.value.length < 1 || $.trim(msg.value).length == 0){
             console.log('Empty str');
@@ -23,7 +24,7 @@ Template.app.events({
             }
             // Save the new message to the collection
             var timeStamp = new Date();
-            var result = Messages.insert({
+            var newTodo = {
                 title: title.value,
                 msg: msg.value,
                 createdAt: timeStamp,
@@ -31,6 +32,11 @@ Template.app.events({
                 dueDate: dueDate.value,
                 time: time.value,
                 status: 'not-done'
+            };
+            Meteor.call('createItem', newTodo, function(err, response){
+                if(err){
+                    console.log('error returned');
+                }
             });
             // Clear the field
             $(msg).val('').closest('div').removeClass('has-error');
@@ -41,7 +47,7 @@ Template.app.events({
     // Clear the whole collection
     'click #clear': function(){
         confirm('Are you sure you want to clear all messages ?');
-        Meteor.call('removeAll');
+        Meteor.call('removeItem');
     }
 });
 
@@ -56,16 +62,25 @@ Template.todoItem.events({
         $(footer).hide();
     },
 
-    // Need to create server method and place the logic there
     // Actions handler
     'click .action-icon': function(event, template){
         var currentItem = this._id;
         var actionIcon = event.currentTarget.firstChild;
         var clicked =  $(event.currentTarget);
+        var action = actionIcon.className;
+        var dataToPass = {
+            itemId: currentItem
+        };
         if($(actionIcon).is('.fa-check')){
             //complete
-            Messages.update(this._id, { $set: {'status': 'completed'}});
-            clicked.closest('.todo-item').toggleClass('todo-completed');
+            dataToPass.token = 'complete';
+            Meteor.call('updateCollectionItem', dataToPass, function(err, response){
+               if(err){
+                   console.log('error returned');
+               } else {
+                   clicked.closest('.todo-item').toggleClass('todo-completed');
+               }
+            });
         }
         else if($(actionIcon).is('.fa-edit')){
             //edit
@@ -73,13 +88,24 @@ Template.todoItem.events({
             $(thisElementBody).attr('contenteditable', true).focus();
             $(thisElementBody).blur(function(){
                 $(this).attr('contenteditable', false);
-                var newMsg = $(this).find('p').html();
-                Messages.update(currentItem, { $set: {msg: newMsg}});
+                dataToPass.token = 'edit';
+                dataToPass.newValue = $(this).find('p').html();
+                console.log(dataToPass);
+                Meteor.call('updateCollectionItem', dataToPass, function(err, response){
+                    if(err){
+                        console.log('error returned');
+                    }
+                });
             });
         }
         else if($(actionIcon).is('.fa-trash-o')){
             //remove
-            Messages.remove(currentItem);
+            console.log(dataToPass);
+            Meteor.call('removeItem', currentItem, function(err, response){
+                if(err){
+                    console.log('err returned');
+                }
+            });
         }
     },
 
@@ -122,10 +148,20 @@ Template.todoItemCompleted.events({
         var currentItem = this._id;
         var actionIcon = event.currentTarget.firstChild;
         var clicked =  $(event.currentTarget);
+        var action = actionIcon.className;
+        var dataToPass = {
+            itemId: currentItem
+        };
         if($(actionIcon).is('.fa-undo')){
             //complete
-            Messages.update(this._id, { $set: {'status': 'not-done'}});
-            clicked.closest('.todo-item').toggleClass('todo-completed');
+            dataToPass.token = 'undo';
+            Meteor.call('updateCollectionItem', dataToPass, function(err, response){
+                if(err){
+                    console.log('error returned');
+                } else {
+                    clicked.closest('.todo-item').toggleClass('todo-completed');
+                }
+            });
         }
         else if($(actionIcon).is('.fa-edit')){
             //edit
@@ -133,13 +169,24 @@ Template.todoItemCompleted.events({
             $(thisElementBody).attr('contenteditable', true).focus();
             $(thisElementBody).blur(function(){
                 $(this).attr('contenteditable', false);
-                var newMsg = $(this).find('p').html();
-                Messages.update(currentItem, { $set: {msg: newMsg}});
+                dataToPass.token = 'edit';
+                dataToPass.newValue = $(this).find('p').html();
+                console.log(dataToPass);
+                Meteor.call('updateCollectionItem', dataToPass, function(err, response){
+                    if(err){
+                        console.log('error returned');
+                    }
+                });
             });
         }
         else if($(actionIcon).is('.fa-trash-o')){
             //remove
-            Messages.remove(currentItem);
+            console.log(dataToPass);
+            Meteor.call('removeItem', currentItem, function(err, response){
+                if(err){
+                    console.log('err returned');
+                }
+            });
         }
     },
 

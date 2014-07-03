@@ -7,6 +7,8 @@
     "scss": {},
     "moment": {},
     "fontawesome4": {},
-    "bootstrap-3-timepicker": {}
+    "bootstrap-3-timepicker": {},
+    "view-manager": {},
+    "template-animation-helper": {}
   }
 }

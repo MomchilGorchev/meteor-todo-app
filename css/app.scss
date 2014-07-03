@@ -20,7 +20,56 @@ $button-hover: #C5D6C5;
 html, body{
   height: 95%;
 }
+.animate {
+  opacity: 1;
+  transition: opacity 2s;
+  -webkit-transition: opacity 2s;
+}
 body{
+  header.navbar{
+    background: $header-background;
+    border-bottom: 2px solid $header-border;
+    width: 100%;
+    padding: 10px;
+    ul.loginInfo{
+      #login-buttons{
+        a.login-link-text{
+          text-decoration: inherit;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+      #login-dropdown-list{
+        position: absolute;
+        background: $header-background;
+        padding: 15px;
+        border-radius: 5px;
+        width: 260px;
+        top: 66px;
+        left: -171px;
+        .login-close-text{
+          text-decoration: inherit;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    a{
+      color: $text-color;
+    }
+    a.brand{
+      img{
+        width: 50px;
+      }
+      span.logoText{
+        font-size: 20px;
+        vertical-align: middle;
+        color: $text-color;
+      }
+    }
+  }
   .row{
     .col-lg-6{
       .desc-block{
@@ -83,36 +132,6 @@ body{
   #holder-completed, #holder-uncompleted{
     width: 100%;
   }
-  header.navbar{
-    background: $header-background;
-    border-bottom: 2px solid $header-border;
-    width: 100%;
-    padding: 10px;
-    ul.loginInfo{
-      #login-dropdown-list{
-        position: absolute;
-        background: $main-background;
-        padding: 15px;
-        border-radius: 5px;
-        width: 260px;
-        top: 26px;
-        left: -195px;
-      }
-    }
-    a{
-      color: $text-color;
-    }
-    a.brand{
-      img{
-        width: 50px;
-      }
-      span.logoText{
-        font-size: 20px;
-        vertical-align: middle;
-        color: $text-color;
-      }
-    }
-  }
   .container{
     .col-md-12{
       h1{
@@ -124,6 +143,8 @@ body{
     text-align:center;
   }
   .todo-item{
+    transition: opacity 2s;
+    -webkit-transition: opacity 2s;
     border: $main-background;
     .panel-heading{
       background: $header-background;
@@ -165,6 +186,8 @@ body{
     }
   }
   .todo-completed{
+    transition: opacity 2s;
+    -webkit-transition: opacity 2s;
     .panel-heading {
       .todo-title {
         text-decoration: line-through;
