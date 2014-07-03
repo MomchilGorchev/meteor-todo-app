@@ -8,18 +8,6 @@
 Messages = new Meteor.Collection("messages");
 Meteor.startup(function () {
     //process.env.MAIL_URL =  'smtp://';
-    // BuildIn methods
-    Messages.allow({
-        'insert': function(){
-            return true;
-        },
-        'update': function(){
-            return true;
-        },
-        'remove': function(){
-            return true;
-        }
-    });
 
     Meteor.publish("messages", function(userId){
         return Messages.find({author: this.userId});
@@ -28,6 +16,18 @@ Meteor.startup(function () {
     return Meteor.methods({
         removeAll: function () {
             return Messages.remove({});
+        },
+
+        updateCollectionItem: function(data){
+            if(data.token == 'dueDate'){
+                Messages.update(data.itemId, {$set: {dueDate: data.newValue}});
+            }
+            else if(data.token == 'time'){
+                Messages.update(data.itemId, {$set: {time: data.newValue}});
+            }
+            else if(data.token == 'title'){
+                Messages.update(data.itemId, {$set: {title: data.newValue}});
+            }
         }
 
 //        sendEmail: function (to, from, subject, text) {
@@ -46,18 +46,3 @@ Meteor.startup(function () {
 //        }
     });
 });
-
-
-/*
-users.each(users, function(user){
-    var id;
-    id = Accounts.createUser({
-        email: user.email,
-        password: user.password,
-        profile: {name: user.name}
-    })
-});
-
-if(users.roles.length > 0){
-    Roles.addUsersToRoles(id, user.roles);
-}*/

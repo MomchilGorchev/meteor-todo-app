@@ -56,6 +56,7 @@ Template.todoItem.events({
         $(footer).hide();
     },
 
+    // Need to create server method and place the logic there
     // Actions handler
     'click .action-icon': function(event, template){
         var currentItem = this._id;
@@ -87,27 +88,21 @@ Template.todoItem.events({
         var collectionItem = this._id;
         var clicked = event.currentTarget;
         var dataToken = $(clicked).data('token');
-        if(dataToken == 'dueDate'){
-            $(clicked).attr('contenteditable', true).focus();
-            $(clicked).blur(function(){
-                $(this).attr('contenteditable', false);
-                Messages.update(collectionItem, {$set: {dueDate: $(this).html()}})
+
+        $(clicked).attr('contenteditable', true).focus();
+        $(clicked).blur(function(){
+            $(this).attr('contenteditable', false);
+            var dataToPass = {
+                itemId: collectionItem,
+                token: dataToken,
+                newValue: $(clicked).html()
+            };
+            Meteor.call('updateCollectionItem', dataToPass, function(err, response){
+                if(err){
+                    console.log('error returned');
+                }
             });
-        }
-        else if(dataToken == 'time'){
-            $(clicked).attr('contenteditable', true).focus();
-            $(clicked).blur(function(){
-                $(this).attr('contenteditable', false);
-                Messages.update(collectionItem, {$set: {time: $(this).html()}})
-            });
-        }
-        else if(dataToken == 'title'){
-            $(clicked).attr('contenteditable', true).focus();
-            $(clicked).blur(function(){
-                $(this).attr('contenteditable', false);
-                Messages.update(collectionItem, {$set: {title: $(this).html()}})
-            });
-        }
+        });
     }
 });
 
@@ -153,26 +148,20 @@ Template.todoItemCompleted.events({
         var collectionItem = this._id;
         var clicked = event.currentTarget;
         var dataToken = $(clicked).data('token');
-        if(dataToken == 'dueDate'){
-            $(clicked).attr('contenteditable', true).focus();
-            $(clicked).blur(function(){
-                $(this).attr('contenteditable', false);
-                Messages.update(collectionItem, {$set: {dueDate: $(this).html()}})
+
+        $(clicked).attr('contenteditable', true).focus();
+        $(clicked).blur(function(){
+            $(this).attr('contenteditable', false);
+            var dataToPass = {
+                itemId: collectionItem,
+                token: dataToken,
+                newValue: $(clicked).html()
+            };
+            Meteor.call('updateCollectionItem', dataToPass, function(err, response){
+                if(err){
+                    console.log('error returned');
+                }
             });
-        }
-        else if(dataToken == 'time'){
-            $(clicked).attr('contenteditable', true).focus();
-            $(clicked).blur(function(){
-                $(this).attr('contenteditable', false);
-                Messages.update(collectionItem, {$set: {time: $(this).html()}})
-            });
-        }
-        else if(dataToken == 'title'){
-            $(clicked).attr('contenteditable', true).focus();
-            $(clicked).blur(function(){
-                $(this).attr('contenteditable', false);
-                Messages.update(collectionItem, {$set: {title: $(this).html()}})
-            });
-        }
+        });
     }
 });
