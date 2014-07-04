@@ -47,7 +47,7 @@ body{
         border-radius: 5px;
         width: 260px;
         top: 66px;
-        left: -171px;
+        left: -175px;
         .login-close-text{
           text-decoration: inherit;
           &:hover{
@@ -77,9 +77,9 @@ body{
         #due-date{
           position: absolute;
           text-align: right;
-          width: 99%;
-          right: 1px;
-          top: 100px;
+          width: 97%;
+          right: 5px;
+          top: 102px;
           border: none;
           border-radius: 0;
           font-family: 'Lobster';
@@ -101,6 +101,30 @@ body{
       textarea{
         height: 280px;
         padding-top: 35px;
+      }
+      .custom-tooltip{
+        display: none;
+        position: absolute;
+        top: 121px;
+        left: -216px;
+        background: black;
+        color: aliceblue;
+        padding: 5px;
+        border-radius: 3px;
+        .custom-tooltip-text{
+          margin: 5px;
+        }
+        .arrow-right {
+          position: absolute;
+          top: 10px;
+          right: -10px;
+          width: 0;
+          height: 0;
+          border-top: 10px solid transparent;
+          border-bottom: 10px solid transparent;
+
+          border-left: 10px solid black;
+        }
       }
     }
     .btn-holder{
@@ -149,7 +173,7 @@ body{
     .panel-heading{
       background: $header-background;
       .todo-title{
-        width:50%;
+        width:45%;
       }
       p{
         color: $text-color;
@@ -191,7 +215,7 @@ body{
     .panel-heading {
       .todo-title {
         text-decoration: line-through;
-        width: 50%;
+        width: 45%;
       }
       .info-editable{
         word-break: break-all;

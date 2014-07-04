@@ -17,13 +17,21 @@ Template.app.messagesCompleted = function() {
 
 // App .rendered function
 Template.app.rendered = function(){
-  $('.datepicker').datepicker({
+
+    $('.datepicker').datepicker({
       dateFormat: 'dd-mm-yy',
       altField: '#due-date',
       inline: true,
       showOtherMonths: true,
       dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-  });
+    });
+
+    $('textarea').hover(function(){
+        $(this).siblings('.custom-tooltip').fadeIn('fast');
+    },
+    function(){
+        $(this).siblings('.custom-tooltip').fadeOut('fast');
+    });
 };
 
 
