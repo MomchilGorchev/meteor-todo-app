@@ -1,5 +1,5 @@
 //Meteor.startup(function () {
-//    process.env.MAIL_URL = 'smtp://username:password@domain.com:587';
+//    process.env.MAIL_URL = 'smtp://username:pass@domain.co.uk:587';
 //});
 //if (Meteor.isServer) {
 //    Email.send({

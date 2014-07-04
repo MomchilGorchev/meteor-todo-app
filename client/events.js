@@ -31,7 +31,8 @@ Template.app.events({
                 author: Meteor.user()._id,
                 dueDate: dueDate.value,
                 time: time.value,
-                status: 'not-done'
+                status: 'not-done',
+                emailToNotify: Meteor.user().emails[0].address
             };
             Meteor.call('createItem', newTodo, function(err, response){
                 if(err){

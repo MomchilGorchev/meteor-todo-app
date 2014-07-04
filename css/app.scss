@@ -54,6 +54,9 @@ body{
             text-decoration: underline;
           }
         }
+        label{
+          color: $text-color;
+        }
       }
     }
     a{

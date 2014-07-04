@@ -23,7 +23,8 @@ Meteor.startup(function () {
                     author: Meteor.user()._id,
                     dueDate: newItem.dueDate,
                     time: newItem.time,
-                    status: 'not-done'
+                    status: 'not-done',
+                    emailToNotify: newItem.emailToNotify
                 });
             }
         },
@@ -57,20 +58,5 @@ Meteor.startup(function () {
                 Messages.update(data.itemId, { $set: {msg: data.newValue}});
             }
         }
-
-//        sendEmail: function (to, from, subject, text) {
-//            check([to, from, subject, text], [String]);
-//
-//            // Let other method calls from the same client start running,
-//            // without waiting for the email sending to complete.
-//            this.unblock();
-//
-//            Email.send({
-//                to: to,
-//                from: from,
-//                subject: subject,
-//                text: text
-//            });
-//        }
     });
 });
