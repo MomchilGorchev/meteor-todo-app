@@ -11,7 +11,8 @@
       "fontawesome4": {},
       "bootstrap-3-timepicker": {},
       "view-manager": {},
-      "template-animation-helper": {}
+      "template-animation-helper": {},
+      "wait-on-lib": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -31,8 +32,8 @@
       },
       "accounts-ui-bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
-        "tag": "v0.3.2",
-        "commit": "8686c0d3107cf48c72a5500b027f081c7e79dbbc"
+        "tag": "v0.3.3",
+        "commit": "2e50b605d8d5ed68e48c4529a65f13552d8af3f9"
       },
       "scss": {
         "git": "https://github.com/fourseven/meteor-scss.git",
@@ -63,6 +64,11 @@
         "git": "https://github.com/frozeman/meteor-template-animation-helper.git",
         "tag": "v1.1.4",
         "commit": "dc979ae35b2205b222fd9c8b8b1c6a5189617d2f"
+      },
+      "wait-on-lib": {
+        "git": "https://github.com/DerMambo/wait-on-lib.git",
+        "tag": "v0.0.3",
+        "commit": "ee83a431019b59c341903c3f732ff3d8d038a8ce"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

@@ -9,6 +9,7 @@
     "fontawesome4": {},
     "bootstrap-3-timepicker": {},
     "view-manager": {},
-    "template-animation-helper": {}
+    "template-animation-helper": {},
+    "wait-on-lib": {}
   }
 }

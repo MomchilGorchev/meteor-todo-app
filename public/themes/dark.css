@@ -1,0 +1,58 @@
+/**
+  Color declarations
+**/
+/* - navbar-color: #353F42;
+// - navbar-border: #3E606F;
+// - main-background: #A6A59B;
+// - text-color: #F3F5F3;
+// - btn-background: #038C75;
+// - btn-hover: #C5D6C5; */
+
+
+header.navbar {
+    background: #353F42;
+    border-bottom: 2px solid #3E606F;
+}
+header.navbar a{
+    color: #F3F5F3;
+}
+span.logoText {
+    color: #F3F5F3;
+}
+
+#login-dropdown-list {
+    background: #353F42;
+}
+#login-dropdown-list label{
+    color: #F3F5F3;
+}
+.page-wrap {
+    background: #A6A59B;
+}
+.page-wrap input {
+    background: #F3F5F3;
+    color: #353F42;
+    border: #353F42;
+}
+.page-wrap input:hover{
+    background: #C5D6C5;
+}
+.todo-item, .todo-completed {
+    border: #A6A59B;
+}
+.todo-item, .todo-completed .panel-heading{
+    background: #353F42;
+}
+.todo-item, .todo-completed p{
+    color: #F3F5F3;
+}
+.info-editable:focus{
+    background: ivory;
+    color: #353F42;
+}
+.panel-footer i {
+    color: #038C75;
+}
+.panel-footer i:hover{
+    color: #353F42;
+}

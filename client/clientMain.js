@@ -38,3 +38,4 @@ Template.app.rendered = function(){
 Handlebars.registerHelper("prettifyDate", function(timestamp) {
     return moment(new Date(timestamp)).calendar();
 });
+
