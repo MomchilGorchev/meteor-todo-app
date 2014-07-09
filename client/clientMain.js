@@ -100,6 +100,13 @@ Template.app.rendered = function(){
     function(){
         $(this).siblings('.custom-tooltip').fadeOut('fast');
     });
+    var tabs = $('#tabs').tabs();
+//    tabs.find( ".ui-tabs-nav" ).sortable({
+//        axis: "x",
+//        stop: function() {
+//            tabs.tabs( "refresh" );
+//        }
+//    });
 };
 
 // Prettify Date

@@ -146,6 +146,33 @@ body{
         margin-left: 32px;
       }
     }
+    div#tabs, div#tabs-2.row, div#tabs-1.row{
+      border: none;
+      background: none;
+      color: $text-color;
+      ul{
+        border:none;
+        background: none;
+        border-bottom: 1px solid black;
+        margin-bottom: 40px;
+        border-radius: 0;
+        li{
+          display: inline-block;
+          border: none;
+          background: none;
+          width: 80px;
+          height: 30px;
+          padding-left: 20px;
+          border-top: 1px solid black;
+          border-right: 1px solid black;
+          border-left: 1px solid black;
+        }
+        li.ui-tabs-active.ui-state-active{
+          border: none;
+          background: none;
+        }
+      }
+    }
   }
   .footer, .push {
     height: 5em;
@@ -242,6 +269,9 @@ body{
     }
   }
 }
+/**
+*   Keyframes rules
+*/
 @keyframes fadein {
   from {
     opacity:0;
