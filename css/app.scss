@@ -170,8 +170,11 @@ body{
     text-align:center;
   }
   .todo-item{
-    transition: opacity 2s;
-    -webkit-transition: opacity 2s;
+    -webkit-animation: fadein 1.5s; /* Safari and Chrome */
+    -moz-animation: fadein 1.5s; /* Firefox */
+    -ms-animation: fadein 1.5s; /* Internet Explorer */
+    -o-animation: fadein 1.5s; /* Opera */
+    animation: fadein 1.5s;
     border: $main-background;
     .panel-heading{
       background: $header-background;
@@ -213,8 +216,11 @@ body{
     }
   }
   .todo-completed{
-    transition: opacity 2s;
-    -webkit-transition: opacity 2s;
+    -webkit-animation: fadein 1.5s; /* Safari and Chrome */
+    -moz-animation: fadein 1.5s; /* Firefox */
+    -ms-animation: fadein 1.5s; /* Internet Explorer */
+    -o-animation: fadein 1.5s; /* Opera */
+    animation: fadein 1.5s;
     .panel-heading {
       .todo-title {
         text-decoration: line-through;
@@ -234,5 +240,37 @@ body{
         overflow-wrap: break-word;
       }
     }
+  }
+}
+@keyframes fadein {
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+@-moz-keyframes fadein { /* Firefox */
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+@-o-keyframes fadein { /* Opera */
+  from {
+    opacity:0;
+  }
+  to {
+    opacity: 1;
   }
 }

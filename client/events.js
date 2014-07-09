@@ -65,6 +65,7 @@ Template.todoItem.events({
 
     // Actions handler
     'click .action-icon': function(event, template){
+        event.preventDefault();
         var currentItem = this._id;
         var actionIcon = event.currentTarget.firstChild;
         var clicked =  $(event.currentTarget);
@@ -146,6 +147,7 @@ Template.todoItemCompleted.events({
 
     // Actions handler
     'click .action-icon': function(event, template){
+        event.preventDefault();
         var currentItem = this._id;
         var actionIcon = event.currentTarget.firstChild;
         var clicked =  $(event.currentTarget);
