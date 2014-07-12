@@ -150,27 +150,48 @@ body{
       border: none;
       background: none;
       color: $text-color;
+      -webkit-animation: fadein 1s; /* Safari and Chrome */
+      -moz-animation: fadein 1s; /* Firefox */
+      -ms-animation: fadein 1s; /* Internet Explorer */
+      -o-animation: fadein 1s; /* Opera */
+      animation: fadein 1s;
       ul{
         border:none;
         background: none;
-        border-bottom: 1px solid black;
-        margin-bottom: 40px;
-        border-radius: 0;
         li{
           display: inline-block;
           border: none;
           background: none;
-          width: 80px;
+          width: 120px;
           height: 30px;
-          padding-left: 20px;
-          border-top: 1px solid black;
-          border-right: 1px solid black;
-          border-left: 1px solid black;
+          text-align: center;
+          i{
+            display:none;
+            position: relative;
+            top: 29px;
+            right: 37px;
+          }
         }
         li.ui-tabs-active.ui-state-active{
           border: none;
           background: none;
+          border-bottom: 2px solid $text-color;
+          position: relative;
+          i{
+            display: inline-block;
+            position: absolute;
+            top: 3px;
+            right: 48px;
+            color: $text-color;
+          }
         }
+      }
+      hr.slick-light{
+          border: 0;
+          height: 0;
+          border-top: 1px solid rgba(0, 0, 0, 0.1);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+          margin-top:-2px;
       }
     }
   }
@@ -197,11 +218,11 @@ body{
     text-align:center;
   }
   .todo-item{
-    -webkit-animation: fadein 1.5s; /* Safari and Chrome */
-    -moz-animation: fadein 1.5s; /* Firefox */
-    -ms-animation: fadein 1.5s; /* Internet Explorer */
-    -o-animation: fadein 1.5s; /* Opera */
-    animation: fadein 1.5s;
+    -webkit-animation: fadein 1s; /* Safari and Chrome */
+    -moz-animation: fadein 1s; /* Firefox */
+    -ms-animation: fadein 1s; /* Internet Explorer */
+    -o-animation: fadein 1s; /* Opera */
+    animation: fadein 1s;
     border: $main-background;
     .panel-heading{
       background: $header-background;
@@ -226,6 +247,7 @@ body{
       min-height: 100px;
       p{
         overflow-wrap: break-word;
+        color: $header-background;
       }
     }
     .panel-footer{
@@ -243,11 +265,6 @@ body{
     }
   }
   .todo-completed{
-    -webkit-animation: fadein 1.5s; /* Safari and Chrome */
-    -moz-animation: fadein 1.5s; /* Firefox */
-    -ms-animation: fadein 1.5s; /* Internet Explorer */
-    -o-animation: fadein 1.5s; /* Opera */
-    animation: fadein 1.5s;
     .panel-heading {
       .todo-title {
         text-decoration: line-through;
@@ -265,6 +282,7 @@ body{
       background: url("/img/Completed_stamp.png") no-repeat top right;
       p{
         overflow-wrap: break-word;
+        color: $header-background;
       }
     }
   }

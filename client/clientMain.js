@@ -9,18 +9,7 @@ Meteor.subscribe('messages');
 // Return only not-completed todo-s
 Template.app.messages = function() {
    return Messages.find({status: 'not-done'}, {sort: {createdAt: -1}});
-
-//    var today = new Date();
-//    var dd = today.getDate();
-//    var mm = today.getMonth()+1; //January is 0!
-//    var yyyy = today.getFullYear();
-//    if(dd<10) {
-//        dd='0'+dd
-//    }
-//    if(mm<10) {
-//        mm='0'+mm
-//    }
-//    today = mm+'-'+dd+'-'+yyyy;
+//  Timestamp handling
 //    var timeNow ={
 //        hours: parseInt(moment().format('HH')),
 //        mins: parseInt(moment().format('mm'))
@@ -101,12 +90,12 @@ Template.app.rendered = function(){
         $(this).siblings('.custom-tooltip').fadeOut('fast');
     });
     var tabs = $('#tabs').tabs();
-//    tabs.find( ".ui-tabs-nav" ).sortable({
-//        axis: "x",
-//        stop: function() {
-//            tabs.tabs( "refresh" );
-//        }
-//    });
+    tabs.find( ".ui-tabs-nav" ).sortable({
+        axis: "x",
+        stop: function() {
+            tabs.tabs( "refresh" );
+        }
+    });
 };
 
 // Prettify Date
