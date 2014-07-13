@@ -78,6 +78,7 @@ body{
       .desc-block{
         position: relative;
         #due-date{
+          color: $header-background;
           position: absolute;
           text-align: right;
           width: 97%;
@@ -102,7 +103,7 @@ body{
         width:57%;
       }
       textarea{
-        height: 280px;
+        height: 285px;
         padding-top: 35px;
       }
       .custom-tooltip{
@@ -140,7 +141,9 @@ body{
         }
       }
       .submit{
-        margin-left: 15px;
+        margin-left: 17px;
+        width: 26%;
+        border-radius: 16px;
       }
       #clear{
         margin-left: 32px;

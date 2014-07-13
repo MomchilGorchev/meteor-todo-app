@@ -3,6 +3,12 @@
  *
  * Template events
  */
+Template.headerTemplate.events({
+   'click .theme-link': function(){
+       var themeurl = themes[$(this).attr('data-theme')];
+       themesheet.attr('href',themeurl);
+   }
+});
 
 Template.app.events({
     // Submit a message

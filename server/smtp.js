@@ -1,5 +1,6 @@
 function compareDates(){
-    var start = new Date().getTime();
+    console.log('Compare Dates started...');
+    var start = new Date().getMilliseconds();
     var allMessages = Messages.find({status: 'not-done'}).fetch();
     var emailsSent = 0;
     for(var i = 0; i < allMessages.length; i++){
@@ -50,18 +51,16 @@ function compareDates(){
             Messages.update(allMessages[i]._id, {$set: {status: 'completed'}});
         }
     }
-    var end = new Date().getTime();
-    var result = start - end;
-    console.log('All Messages: ' + allMessages.length);
-    console.log('Emails sent: ' + emailsSent);
-    console.log('Exucution time: ' + result);
-    console.log('Timestamp: ' + new Date());
+    var end = new Date().getMilliseconds();
+    var result = end - start;
+    console.log('--==-- All Messages: ' + allMessages.length);
+    console.log('--==-- Emails sent: ' + emailsSent);
+    console.log('--==-- Exucution time: ~ ' + result + ' milliseconds');
+    console.log('Compare Dates finished execution!');
+    console.log('* * * Timestamp: ' + new Date() + ' * * *');
     return emailsSent;
 }
 Meteor.startup(function () {
     compareDates();
     process.env.MAIL_URL = 'smtp://fatninja1985:Karame11che@gmail.com:587';
-    if(Meteor.isServer){
-        //compareDates();
-    }
 });

@@ -3,6 +3,22 @@
  *
  * Client side collections and stuff
  */
+//themes = {
+//    "default": "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css",
+//    "amelia" : "//bootswatch.com/amelia/bootstrap.min.css",
+//    "cerulean" : "//bootswatch.com/cerulean/bootstrap.min.css",
+//    "cosmo" : "//bootswatch.com/cosmo/bootstrap.min.css",
+//    "cyborg" : "//bootswatch.com/cyborg/bootstrap.min.css",
+//    "flatly" : "//bootswatch.com/flatly/bootstrap.min.css",
+//    "journal" : "//bootswatch.com/journal/bootstrap.min.css",
+//    "readable" : "//bootswatch.com/readable/bootstrap.min.css",
+//    "simplex" : "//bootswatch.com/simplex/bootstrap.min.css",
+//    "slate" : "//bootswatch.com/slate/bootstrap.min.css",
+//    "spacelab" : "//bootswatch.com/spacelab/bootstrap.min.css",
+//    "united" : "//bootswatch.com/united/bootstrap.min.css"
+//};
+//themesheet = $('<link href="'+themes['default']+'" rel="stylesheet" />');
+//themesheet.appendTo('head');
 Messages = new Meteor.Collection("messages");
 Meteor.subscribe('messages');
 
@@ -24,13 +40,6 @@ Template.app.rendered = function(){
       inline: true,
       showOtherMonths: true,
       dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    });
-
-    $('textarea').hover(function(){
-        $(this).siblings('.custom-tooltip').fadeIn('fast');
-    },
-    function(){
-        $(this).siblings('.custom-tooltip').fadeOut('fast');
     });
     var tabs = $('#tabs').tabs();
     tabs.find( ".ui-tabs-nav" ).sortable({

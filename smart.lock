@@ -12,7 +12,8 @@
       "bootstrap-3-timepicker": {},
       "view-manager": {},
       "template-animation-helper": {},
-      "wait-on-lib": {}
+      "wait-on-lib": {},
+      "modernizr-meteor": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -69,6 +70,11 @@
         "git": "https://github.com/DerMambo/wait-on-lib.git",
         "tag": "v0.0.3",
         "commit": "ee83a431019b59c341903c3f732ff3d8d038a8ce"
+      },
+      "modernizr-meteor": {
+        "git": "https://github.com/ckir/modernizr-meteor.git",
+        "tag": "v2.6.2",
+        "commit": "391ca2a3beff3cd2b0e1099cb2d744b5a2e8a73e"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
