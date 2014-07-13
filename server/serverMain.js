@@ -24,7 +24,8 @@ Meteor.startup(function () {
                     dueDate: newItem.dueDate,
                     time: newItem.time,
                     status: 'not-done',
-                    emailToNotify: newItem.emailToNotify
+                    emailToNotify: newItem.emailToNotify,
+                    notificationSent: 0
                 });
             }
         },

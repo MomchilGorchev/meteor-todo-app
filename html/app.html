@@ -52,14 +52,12 @@
 
             <!--LISTS-->
             <div id="tabs-2" class="row">
-                {{#Animate}}
-                    <div class="col-xs-12 col-lg-6 col-md-6 animate">
-                        <h3>Uncompleted:</h3>
-                        {{#each messages}}
-                            {{> todoItem}}
-                        {{/each}}
-                    </div>
-                {{/Animate}}
+                <div class="col-xs-12 col-lg-6 col-md-6 animate">
+                    <h3>Uncompleted:</h3>
+                    {{#each messages}}
+                        {{> todoItem}}
+                    {{/each}}
+                </div>
 
                 <div class="col-xs-12 col-lg-6 col-md-6">
                     <h3>Completed:</h3>
