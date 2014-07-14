@@ -221,3 +221,16 @@ Template.todoItemCompleted.events({
         });
     }
 });
+
+Template.settings.events({
+    'click .theme-toggle': function(event, template){
+        var token = $(event.currentTarget).data('theme');
+        // Left to be done: Mechanism for persisting the theme
+        if(token == 'default'){
+            $('#themeApplied').detach();
+        }else{
+            themesheet = $('<link id="themeApplied" href="'+themes[token]+'" rel="stylesheet" />');
+            themesheet.appendTo('head');
+        }
+    }
+});

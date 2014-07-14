@@ -14,6 +14,7 @@ Meteor.startup(function () {
     });
 
     return Meteor.methods({
+        // Create new item
         createItem: function(newItem){
             if(newItem){
                 Messages.insert({
@@ -30,6 +31,7 @@ Meteor.startup(function () {
             }
         },
 
+        // Remove item, remove all if Item's id is omitted
         removeItem: function(id){
             if(id == null){
                 return Messages.remove({});
@@ -38,6 +40,7 @@ Meteor.startup(function () {
             }
         },
 
+        // Updating any property
         updateCollectionItem: function(data){
             if(data.token == 'dueDate'){
                 Messages.update(data.itemId, {$set: {dueDate: data.newValue}});
@@ -54,7 +57,6 @@ Meteor.startup(function () {
             else if(data.token == 'undo'){
                 Messages.update(data.itemId, { $set: {status: 'not-done'}});
             }
-            // --
             else if(data.token == 'edit'){
                 Messages.update(data.itemId, { $set: {msg: data.newValue}});
             }

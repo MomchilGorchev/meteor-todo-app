@@ -168,24 +168,16 @@ body{
           width: 120px;
           height: 30px;
           text-align: center;
-          position: relative;
-          top: 2px;
           i{
-            bottom: 0px;
-            left: 44px;
-            position: absolute;
+            margin-bottom: 5px;
           }
         }
         li.ui-tabs-active.ui-state-active{
           border: none;
           background: none;
           border-bottom: 2px solid $text-color;
-          position: relative;
-          top: 4px;
           i{
-            bottom: 0px;
-            left: 44px;
-            position: absolute;
+            margin-bottom:5px;
           }
         }
       }
