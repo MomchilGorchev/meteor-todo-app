@@ -168,11 +168,12 @@ body{
           width: 120px;
           height: 30px;
           text-align: center;
+          position: relative;
+          top: 2px;
           i{
-            display:none;
-            position: relative;
-            top: 29px;
-            right: 37px;
+            bottom: 0px;
+            left: 44px;
+            position: absolute;
           }
         }
         li.ui-tabs-active.ui-state-active{
@@ -180,12 +181,11 @@ body{
           background: none;
           border-bottom: 2px solid $text-color;
           position: relative;
+          top: 4px;
           i{
-            display: inline-block;
+            bottom: 0px;
+            left: 44px;
             position: absolute;
-            top: 3px;
-            right: 48px;
-            color: $text-color;
           }
         }
       }
