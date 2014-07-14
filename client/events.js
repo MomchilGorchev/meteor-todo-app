@@ -229,7 +229,9 @@ Template.settings.events({
         if(token == 'default'){
             $('#themeApplied').detach();
         }else{
-            themesheet = $('<link id="themeApplied" href="'+themes[token]+'" rel="stylesheet" />');
+            // Clear if any applied already
+            $('#themeApplied').detach();
+            var themesheet = $('<link id="themeApplied" href="'+themes[token]+'" rel="stylesheet" />');
             themesheet.appendTo('head');
         }
     }

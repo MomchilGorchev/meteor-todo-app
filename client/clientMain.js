@@ -3,11 +3,6 @@
  *
  * Client side collections and stuff
  */
-themes = {
-    "amelia" : "//bootswatch.com/amelia/bootstrap.min.css",
-    "cyborg" : "//bootswatch.com/cyborg/bootstrap.min.css",
-    "slate" : "//bootswatch.com/slate/bootstrap.min.css",
-};
 
 Messages = new Meteor.Collection("messages");
 Meteor.subscribe('messages');
