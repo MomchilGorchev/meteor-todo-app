@@ -233,6 +233,17 @@ Template.settings.events({
             $('#themeApplied').detach();
             var themesheet = $('<link id="themeApplied" href="'+themes[token]+'" rel="stylesheet" />');
             themesheet.appendTo('head');
+
+//            var themeSettings = {
+//                user: Meteor.user()._id,
+//                theme: token
+//            };
+//
+//            Meteor.call('updateUser', themeSettings, function(err, response){
+//               if(err){
+//                   console.log("Error occurred!");
+//               }
+//            });
         }
     }
 });

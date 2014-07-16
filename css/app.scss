@@ -87,7 +87,7 @@ body{
           text-align: right;
           width: 97%;
           right: 5px;
-          top: 102px;
+          top: 106px;
           border: none;
           border-radius: 0;
           font-family: 'Lobster';
@@ -169,17 +169,21 @@ body{
           display: inline-block;
           border: none;
           background: none;
-          width: 120px;
-          height: 30px;
+          width: 45px;
+          height: 45px;
           text-align: center;
+          margin-bottom: 10px;
+          margin-right: 10px;
           i{
             margin-bottom: 5px;
           }
         }
         li.ui-tabs-active.ui-state-active{
-          border: none;
-          background: none;
-          border-bottom: 2px solid $text-color;
+          border: 2px solid $text-color;
+          border-radius: 25px;
+          width: 48px;
+          height: 48px;
+          padding-top: 8px;
           i{
             margin-bottom:5px;
           }
@@ -224,12 +228,13 @@ body{
     animation: fadein 1s;
     border: $main-background;
     .panel-heading{
+      border-bottom: 1px solid $header-background;
       background: $header-background;
       .todo-title{
         width:45%;
       }
       p{
-        color: $text-color;
+        color: $header-background;
         padding: 5px;
         vertical-align: middle;
         margin-top: 0;
@@ -250,13 +255,14 @@ body{
       }
     }
     .panel-footer{
+      border-top: 1px solid $header-background;
       display:none;
       a{
         cursor: pointer;
       }
       i{
         margin-left:20px;
-        color: $button-background;
+        color: lightslategray;
         &:hover{
           color: $header-background;
         }
@@ -265,6 +271,7 @@ body{
   }
   .todo-completed{
     .panel-heading {
+      background: lightgray;
       .todo-title {
         text-decoration: line-through;
         width: 45%;
@@ -278,11 +285,14 @@ body{
       }
     }
     .panel-body{
-      background: url("/img/Completed_stamp.png") no-repeat top right;
+      background: url("/img/Completed_stamp.png") #ffffff no-repeat top right;
       p{
         overflow-wrap: break-word;
         color: $header-background;
       }
+    }
+    .panel-footer{
+      background: lightgray;
     }
   }
 }

@@ -5,7 +5,11 @@
  */
 
 Messages = new Meteor.Collection("messages");
+//UserSettigns = new Meteor.Collection('userData');
 Meteor.subscribe('messages');
+//Meteor.subscribe('userData');
+//var preferedTheme = Meteor.user().theme;
+//console.log(UserSettigns);
 
 // Return only not-completed todo-s
 Template.todoLists.messages = function() {
