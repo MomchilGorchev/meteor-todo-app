@@ -3,12 +3,6 @@
  *
  * Template events
  */
-Template.headerTemplate.events({
-   'click .theme-link': function(){
-       var themeurl = themes[$(this).attr('data-theme')];
-       themesheet.attr('href',themeurl);
-   }
-});
 
 Template.app.events({
     // Submit a message
@@ -225,25 +219,37 @@ Template.todoItemCompleted.events({
 Template.settings.events({
     'click .theme-toggle': function(event, template){
         var token = $(event.currentTarget).data('theme');
-        // Left to be done: Mechanism for persisting the theme
+
+        var themeSettings = {};
         if(token == 'default'){
             $('#themeApplied').detach();
+
+            themeSettings = {
+                user: Meteor.user()._id,
+                theme: token
+            };
+
+            Meteor.call('updateUser', themeSettings, function(err, response){
+                if(err){
+                    console.log("Error occurred!");
+                }
+            });
         }else{
             // Clear if any applied already
             $('#themeApplied').detach();
             var themesheet = $('<link id="themeApplied" href="'+themes[token]+'" rel="stylesheet" />');
             themesheet.appendTo('head');
 
-//            var themeSettings = {
-//                user: Meteor.user()._id,
-//                theme: token
-//            };
-//
-//            Meteor.call('updateUser', themeSettings, function(err, response){
-//               if(err){
-//                   console.log("Error occurred!");
-//               }
-//            });
+            themeSettings = {
+                user: Meteor.user()._id,
+                theme: token
+            };
+
+            Meteor.call('updateUser', themeSettings, function(err, response){
+               if(err){
+                   console.log("Error occurred!");
+               }
+            });
         }
     }
 });

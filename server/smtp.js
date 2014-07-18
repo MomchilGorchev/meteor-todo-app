@@ -73,7 +73,4 @@ Meteor.startup(function () {
     compareDates();
     process.env.MAIL_URL = 'smtp://fatninja1985:Karame11che@gmail.com:587';
 
-
-//    var preferedTheme = Meteor.user().theme;
-//    console.log(preferedTheme);
 });

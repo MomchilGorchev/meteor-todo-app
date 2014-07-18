@@ -30,6 +30,60 @@ html, body{
   -webkit-transition: opacity 2s;
 }
 body{
+  .settingsHolder{
+    h4{
+      text-align: center;
+    }
+    ul#themes-list{
+      padding-left:0;
+      list-style-type: none;
+      li{
+        display:block;
+        vertical-align: middle;
+        height: 45px;
+        background: darkgray;
+        background-color: rgba(216, 212, 217, 0.3);
+        background: rgba(216, 212, 217, 0.3);
+        color: rgba(216, 212, 217, 0.3);
+        margin-bottom: 2px;
+        padding-top: 12px;
+        text-align: center;
+        cursor: pointer;
+        &:hover{
+          opacity:.7;
+        }
+        span.color-prievew{
+          display: block;
+          width: 25px;
+          height: 25px;
+          border-radius: 15px;
+          border: 2px solid white;
+          position: absolute;
+          left: 32%;
+        }
+        .default{
+          background: $main-background;
+        }
+        .amelia{
+          background: #108a93;
+        }
+        .cyborg{
+          background: #060606;
+        }
+        .slate{
+          background: #272b30;
+        }
+        a{
+
+          display: block;
+          width: 100%;
+          height: 100%;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
   header.navbar{
     background: $header-background;
     border-bottom: 2px solid $header-border;
@@ -162,7 +216,7 @@ body{
       -ms-animation: fadein 1s; /* Internet Explorer */
       -o-animation: fadein 1s; /* Opera */
       animation: fadein 1s;
-      ul{
+      ul.icon-circles{
         border:none;
         background: none;
         li{

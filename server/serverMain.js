@@ -13,10 +13,6 @@ Meteor.startup(function () {
         return Messages.find({author: this.userId});
     });
 
-    Meteor.publish('userData', function(userId){
-       return Meteor.users.find({_id: this.userId}, {fields: theme});
-    });
-
     return Meteor.methods({
         // Create new item
         createItem: function(newItem){
@@ -64,10 +60,11 @@ Meteor.startup(function () {
             else if(data.token == 'edit'){
                 Messages.update(data.itemId, { $set: {msg: data.newValue}});
             }
-        }
+        },
 
-//        updateUser: function(data){
-//            Meteor.users.update({_id: data.user}, {$set: {theme: data.token}});
-//        }
+        // Saves the theme when user picks one
+        updateUser: function(data){
+            Meteor.users.update({_id: data.user}, {$set: {profile: {theme: data.theme}}});
+        }
     });
 });

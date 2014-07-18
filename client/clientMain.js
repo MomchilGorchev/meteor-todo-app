@@ -4,25 +4,36 @@
  * Client side collections and stuff
  */
 
+// Get the data
 Messages = new Meteor.Collection("messages");
-//UserSettigns = new Meteor.Collection('userData');
 Meteor.subscribe('messages');
-//Meteor.subscribe('userData');
-//var preferedTheme = Meteor.user().theme;
-//console.log(UserSettigns);
+Meteor.subscribe('users');
+
+// Preserving theme selection on login
+Template.headerTemplate.rendered = function(){
+    if(Meteor.user()){
+        var preferredTheme = Meteor.user().profile.theme;
+        if(preferredTheme != 'default'){
+            var themesheet = $('<link id="themeApplied" href="'+ themes[preferredTheme] +'" rel="stylesheet" />');
+        }
+        if(!$('#themeApplied').length){
+            themesheet.appendTo('head');
+        }
+    }
+};
 
 // Return only not-completed todo-s
 Template.todoLists.messages = function() {
    return Messages.find({status: 'not-done'}, {sort: {createdAt: -1}});
 };
+
 // Return only completed todo-s
 Template.todoLists.messagesCompleted = function() {
     return Messages.find({status: 'completed'}, {sort: {createdAt: -1}});
 };
 
-// App .rendered function
+// New item rendered function
 Template.addNewItem.rendered = function(){
-
     $('.datepicker').datepicker({
       dateFormat: 'dd-mm-yy',
       altField: '#due-date',
@@ -43,4 +54,3 @@ Template.addNewItem.rendered = function(){
 Handlebars.registerHelper("prettifyDate", function(timestamp) {
     return moment(new Date(timestamp)).calendar();
 });
-
