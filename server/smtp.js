@@ -1,7 +1,7 @@
 function compareDates(){
     // Save the time to measure the execution period
     var start = new Date().getMilliseconds();
-    console.log('Compare Dates started...');
+    console.log(' - Compare Dates started... - ');
     // Fetch all uncompleted items
     var allMessages = Messages.find({status: 'not-done'}).fetch();
     // Create the email counter for later use
@@ -62,10 +62,10 @@ function compareDates(){
     // Stop the watch and print statistics
     var end = new Date().getMilliseconds();
     var result = end - start;
-    console.log('--==-- All Messages: ' + allMessages.length);
-    console.log('--==-- Emails sent: ' + emailsSent);
-    console.log('--==-- Exucution time: ~ ' + result + ' milliseconds');
-    console.log('Compare Dates finished execution!');
+    console.log('--==> All Messages: ' + allMessages.length);
+    console.log('--==> Emails sent: ' + emailsSent);
+    console.log('--==> Exucution time: ~ ' + result + ' milliseconds');
+    console.log(' - Compare Dates finished execution! - ');
     console.log('* * * Timestamp: ' + new Date() + ' * * *');
     return emailsSent;
 }

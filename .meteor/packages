@@ -10,7 +10,6 @@ bootstrap-3
 iron-router
 jquery-ui
 accounts-password
-roles
 scss
 accounts-ui
 moment
@@ -20,3 +19,5 @@ view-manager
 template-animation-helper
 wait-on-lib
 modernizr-meteor
+d3
+c3

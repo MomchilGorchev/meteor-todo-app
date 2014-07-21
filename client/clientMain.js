@@ -9,6 +9,8 @@ Messages = new Meteor.Collection("messages");
 Meteor.subscribe('messages');
 Meteor.subscribe('users');
 
+
+
 // Preserving theme selection on login
 Template.headerTemplate.rendered = function(){
     if(Meteor.user()){
@@ -51,17 +53,32 @@ Template.addNewItem.rendered = function(){
 };
 
 Template.settings.rendered = function(){
-    var chart = c3.generate({
-        bindto: '#chart',
-        data: {
-            columns: [
-                ['data1', 30, 200, 100, 400, 150, 250],
-                ['data2', 50, 20, 10, 40, 15, 25]
-            ]
-        }
+    
+    function drawChart(){
+        var notDone = Messages.find({status: 'not-done'}, {sort: {createdAt: -1}}).count();
+        var completed = Messages.find({status: 'completed'}, {sort: {createdAt: -1}}).count();
+
+        // Basic chart, read the docs to enhance it
+        var chart = c3.generate({
+            data: {
+                // iris data from R
+                columns: [
+                    ['Completed', completed],
+                    ['Not completed', notDone]
+                ],
+                type : 'pie'
+            },
+            pie: {
+//            onclick: function (d, i) { console.log(d, i); },
+//            onmouseover: function (d, i) { console.log(d, i); },
+//            onmouseout: function (d, i) { console.log(d, i); }
+            }
+        });
+    }
+    Deps.autorun(function (c) {
+        drawChart();
     });
 };
-
 // Prettify Date
 Handlebars.registerHelper("prettifyDate", function(timestamp) {
     return moment(new Date(timestamp)).calendar();
