@@ -10,5 +10,6 @@ Accounts.ui.config({
 themes = {
     "amelia" : "//bootswatch.com/amelia/bootstrap.min.css",
     "cyborg" : "//bootswatch.com/cyborg/bootstrap.min.css",
-    "slate" : "//bootswatch.com/slate/bootstrap.min.css"
+    "slate" : "//bootswatch.com/slate/bootstrap.min.css",
+    "superhero" : "//bootswatch.com/superhero/bootstrap.min.css"
 };
