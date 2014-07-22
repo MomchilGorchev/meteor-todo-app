@@ -7,6 +7,7 @@
 // This styles need to be modified to mutigate conflicts with the themes stylesheets
 //
 @import url(http://fonts.googleapis.com/css?family=Lato|Lobster);
+@import url(http://fonts.googleapis.com/css?family=Bubbler+One);
 
 /**
   Color declarations
@@ -23,6 +24,7 @@ $button-hover: #C5D6C5;
 **/
 html, body{
   height: 95%;
+  font-family: 'Bubbler One', sans-serif;
 }
 .animate {
   opacity: 1;
@@ -33,6 +35,7 @@ body{
   .settingsHolder{
     h4{
       text-align: center;
+      font-family: 'Bubbler One', sans-serif;
     }
     ul#themes-list{
       padding-left:0;
@@ -135,6 +138,7 @@ body{
     }
   }
   .row{
+    font-family: 'Bubbler One', sans-serif;
     .col-lg-6{
       .desc-block{
         position: relative;
@@ -253,8 +257,11 @@ body{
           border-bottom: 1px solid rgba(255, 255, 255, 0.3);
           margin-top:-2px;
       }
-      .settings{
+      .themes{
         background: $header-background;
+      }
+      .chart{
+        background: lightgrey;
       }
       #chart{
         width: 300px;
@@ -269,9 +276,9 @@ body{
     clear: both;
   }
   background: $main-background;
-  font-family: 'Lato';
+  font-family: 'Bubbler One', sans-serif;
   h1{
-    font-family: 'Lobster';
+    font-family: 'Bubbler One', sans-serif;
   }
   #holder-completed, #holder-uncompleted{
     width: 100%;
@@ -285,6 +292,7 @@ body{
   }
   h1, h2, h3{
     text-align:center;
+    font-family: 'Bubbler One', sans-serif;
   }
   .todo-item{
     -webkit-animation: fadein 1s; /* Safari and Chrome */
