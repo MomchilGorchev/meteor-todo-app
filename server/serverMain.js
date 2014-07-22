@@ -13,7 +13,11 @@ Meteor.startup(function () {
         return Messages.find({author: this.userId});
     });
 
+    /**
+     * Main methods block
+     */
     return Meteor.methods({
+
         // Create new item
         createItem: function(newItem){
             if(newItem){

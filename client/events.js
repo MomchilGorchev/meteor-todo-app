@@ -149,8 +149,8 @@ Template.todoItemCompleted.events({
     'click .action-icon': function(event, template){
         event.preventDefault();
         var currentItem = this._id;
-        var actionIcon = event.currentTarget.firstChild;
         var clicked =  $(event.currentTarget);
+        var actionIcon = event.currentTarget.firstChild;
         var action = actionIcon.className;
         var dataToPass = {
             itemId: currentItem
@@ -218,11 +218,15 @@ Template.todoItemCompleted.events({
 
 Template.settings.events({
     'click .theme-toggle': function(event, template){
+
         var token = $(event.currentTarget).data('theme');
+        console.log(token);
 
         var themeSettings = {};
         if(token == 'default'){
-            $('#themeApplied').detach();
+            if(('#themeApplied').length){
+                $('#themeApplied').detach();
+            }
 
             themeSettings = {
                 user: Meteor.user()._id,
@@ -234,7 +238,7 @@ Template.settings.events({
                     console.log("Error occurred!");
                 }
             });
-        }else{
+        } else {
             // Clear if any applied already
             $('#themeApplied').detach();
             var themesheet = $('<link id="themeApplied" href="'+themes[token]+'" rel="stylesheet" />');

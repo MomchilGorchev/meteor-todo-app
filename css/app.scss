@@ -210,7 +210,7 @@ body{
         margin-left: 32px;
       }
     }
-    div#tabs, div#tabs-2.row, div#tabs-1.row{
+    div#tabs, div#tabs-2.row, div#tabs-1.row, div#tabs-3.row{
       border: none;
       background: none;
       color: $text-color;
@@ -252,6 +252,15 @@ body{
           border-top: 1px solid rgba(0, 0, 0, 0.1);
           border-bottom: 1px solid rgba(255, 255, 255, 0.3);
           margin-top:-2px;
+      }
+      .settings{
+        background: $header-background;
+      }
+      #chart{
+        width: 300px;
+        height: 280px;
+        margin:0 auto;
+        color: $header-background;
       }
     }
   }

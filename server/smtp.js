@@ -1,7 +1,8 @@
 function compareDates(){
     // Save the time to measure the execution period
     var start = new Date().getMilliseconds();
-    console.log(' - Compare Dates started... - ');
+    console.log(' - Loading data...');
+    console.log(' - Compare Dates started...');
     // Fetch all uncompleted items
     var allMessages = Messages.find({status: 'not-done'}).fetch();
     // Create the email counter for later use

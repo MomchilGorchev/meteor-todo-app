@@ -4,22 +4,19 @@
  * Client side collections and stuff
  */
 
-// Get the data
 Messages = new Meteor.Collection("messages");
 Meteor.subscribe('messages');
 Meteor.subscribe('users');
 
 
-
-// Preserving theme selection on login
 Template.headerTemplate.rendered = function(){
-    if(Meteor.user()){
+    if(Meteor.user()) {
         var preferredTheme = Meteor.user().profile.theme;
+        var themesheet = $('<link id="themeApplied" href="' + themes[preferredTheme] + '" rel="stylesheet" />');
         if(preferredTheme != 'default'){
-            var themesheet = $('<link id="themeApplied" href="'+ themes[preferredTheme] +'" rel="stylesheet" />');
-        }
-        if(!$('#themeApplied').length){
-            themesheet.appendTo('head');
+            if(!$('#themeApplied').length){
+                themesheet.appendTo('head');
+            }
         }
     }
 };
@@ -53,13 +50,16 @@ Template.addNewItem.rendered = function(){
 };
 
 Template.settings.rendered = function(){
-    
     function drawChart(){
         var notDone = Messages.find({status: 'not-done'}, {sort: {createdAt: -1}}).count();
         var completed = Messages.find({status: 'completed'}, {sort: {createdAt: -1}}).count();
-
         // Basic chart, read the docs to enhance it
         var chart = c3.generate({
+            bindto: '#chart',
+            size: {
+                width: 300,
+                height: 280
+            },
             data: {
                 // iris data from R
                 columns: [
@@ -67,11 +67,6 @@ Template.settings.rendered = function(){
                     ['Not completed', notDone]
                 ],
                 type : 'pie'
-            },
-            pie: {
-//            onclick: function (d, i) { console.log(d, i); },
-//            onmouseover: function (d, i) { console.log(d, i); },
-//            onmouseout: function (d, i) { console.log(d, i); }
             }
         });
     }
