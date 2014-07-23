@@ -23,7 +23,7 @@ Template.headerTemplate.rendered = function(){
 
 // Return only not-completed todo-s
 Template.todoLists.messages = function() {
-   return Messages.find({status: 'not-done'}, {sort: {createdAt: -1}});
+   return Messages.find({status: 'not-done'}, {sort: {orderBy: 1}});
 };
 
 // Return only completed todo-s

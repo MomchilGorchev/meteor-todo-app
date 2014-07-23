@@ -22,6 +22,11 @@ Template.app.events({
             if(title.value.length < 1 || $.trim(title.value).length == 0) {
                 title.value = 'New ToDo';
             }
+
+            //extract the due time
+            var a = time.value.split(':');
+            var b = parseInt(a[0]) + parseInt(a[1]);
+
             // Save the new message to the collection
             var timeStamp = new Date();
             var newTodo = {
@@ -32,8 +37,11 @@ Template.app.events({
                 dueDate: dueDate.value,
                 time: time.value,
                 status: 'not-done',
-                emailToNotify: Meteor.user().emails[0].address
+                emailToNotify: Meteor.user().emails[0].address,
+                orderBy: (moment(dueDate.value, 'DD-MM-YYYY').unix()) + (b * 1024)
+//
             };
+            console.log(newTodo.orderBy);
             Meteor.call('createItem', newTodo, function(err, response){
                 if(err){
                     console.log('error returned');
@@ -44,13 +52,9 @@ Template.app.events({
             $(title).val('');
         }
     },
-
-    // Clear the whole collection
-    'click #clear': function(){
-        confirm('Are you sure you want to clear all messages ?');
-        Meteor.call('removeItem');
-    }
 });
+
+
 
 Template.todoItem.events({
     // Show/Hide action bar
@@ -255,5 +259,11 @@ Template.settings.events({
                }
             });
         }
+    },
+
+    // Clear the whole collection
+    'click #clear': function(){
+        confirm('Are you sure you want to clear all messages ?');
+        Meteor.call('removeItem');
     }
 });

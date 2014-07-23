@@ -305,10 +305,10 @@ body{
       border-bottom: 1px solid $header-background;
       background: $header-background;
       .todo-title{
-        width:45%;
+         width:45%;
       }
       p{
-        color: $header-background;
+        color: $text-color;
         padding: 5px;
         vertical-align: middle;
         margin-top: 0;
@@ -346,6 +346,9 @@ body{
   .todo-completed{
     .panel-heading {
       background: lightgray;
+      p{
+        color: $header-background;
+      }
       .todo-title {
         text-decoration: line-through;
         width: 45%;

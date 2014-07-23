@@ -30,7 +30,8 @@ Meteor.startup(function () {
                     time: newItem.time,
                     status: 'not-done',
                     emailToNotify: newItem.emailToNotify,
-                    notificationSent: 0
+                    notificationSent: 0,
+                    orderBy: newItem.orderBy
                 });
             }
         },
