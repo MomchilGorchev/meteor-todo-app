@@ -69,6 +69,10 @@ Template.settings.rendered = function(){
                 type : 'pie'
             }
         });
+        var stats = $('.stats');
+        stats.find('.completed').html(completed);
+        stats.find('.not').html(notDone);
+        stats.find('.total').html(notDone + completed);
     }
     Deps.autorun(function (c) {
         drawChart();
