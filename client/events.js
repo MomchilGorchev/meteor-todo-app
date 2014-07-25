@@ -23,7 +23,7 @@ Template.app.events({
                 title.value = 'New ToDo';
             }
 
-            //extract the due time
+            //Extract the due time as a timestamp
             var a = time.value.split(':');
             var b = parseInt(a[0]) + parseInt(a[1]);
 
@@ -39,45 +39,47 @@ Template.app.events({
                 status: 'not-done',
                 emailToNotify: Meteor.user().emails[0].address,
                 orderBy: (moment(dueDate.value, 'DD-MM-YYYY').unix()) + (b * 1024)
-//
             };
-            console.log(newTodo.orderBy);
+
+            // Save the item
             Meteor.call('createItem', newTodo, function(err, response){
                 if(err){
                     console.log('error returned');
                 }
+                // Notification logic TBD
             });
             // Clear the field
             $(msg).val('').closest('div').removeClass('has-error');
             $(title).val('');
         }
-    },
+    }
 });
 
 
 
 Template.todoItem.events({
+
     // Show/Hide action bar
     'mouseover .panel': function(event, template){
         var footer = template.find('.panel-footer');
         $(footer).show();
     },
     'mouseout .panel': function(event, template){
-        var footer = template.find('.panel-footer')
+        var footer = template.find('.panel-footer');
         $(footer).hide();
     },
 
-    // Actions handler
+    // Actions handler perform the action depends on data attribute
     'click .action-icon': function(event, template){
         event.preventDefault();
         var currentItem = this._id;
         var actionIcon = event.currentTarget.firstChild;
         var clicked =  $(event.currentTarget);
-        var action = actionIcon.className;
         var dataToPass = {
             itemId: currentItem
         };
         if($(actionIcon).is('.fa-check')){
+
             //complete
             dataToPass.token = 'complete';
             Meteor.call('updateCollectionItem', dataToPass, function(err, response){
@@ -89,6 +91,7 @@ Template.todoItem.events({
             });
         }
         else if($(actionIcon).is('.fa-edit')){
+
             //edit
             var thisElementBody = template.find('.panel-body');
             $(thisElementBody).attr('contenteditable', true).focus();
@@ -105,6 +108,7 @@ Template.todoItem.events({
             });
         }
         else if($(actionIcon).is('.fa-trash-o')){
+
             //remove
             console.log(dataToPass);
             Meteor.call('removeItem', currentItem, function(err, response){
@@ -139,6 +143,7 @@ Template.todoItem.events({
 });
 
 Template.todoItemCompleted.events({
+
     // Show/Hide action bar
     'mouseover .panel': function(event, template){
         var footer = template.find('.panel-footer');
@@ -155,11 +160,12 @@ Template.todoItemCompleted.events({
         var currentItem = this._id;
         var clicked =  $(event.currentTarget);
         var actionIcon = event.currentTarget.firstChild;
-        var action = actionIcon.className;
+//        var action = actionIcon.className;
         var dataToPass = {
             itemId: currentItem
         };
         if($(actionIcon).is('.fa-undo')){
+
             //complete
             dataToPass.token = 'undo';
             Meteor.call('updateCollectionItem', dataToPass, function(err, response){
@@ -171,6 +177,7 @@ Template.todoItemCompleted.events({
             });
         }
         else if($(actionIcon).is('.fa-edit')){
+
             //edit
             var thisElementBody = template.find('.panel-body');
             $(thisElementBody).attr('contenteditable', true).focus();
@@ -187,6 +194,7 @@ Template.todoItemCompleted.events({
             });
         }
         else if($(actionIcon).is('.fa-trash-o')){
+
             //remove
             console.log(dataToPass);
             Meteor.call('removeItem', currentItem, function(err, response){
@@ -202,7 +210,6 @@ Template.todoItemCompleted.events({
         var collectionItem = this._id;
         var clicked = event.currentTarget;
         var dataToken = $(clicked).data('token');
-
         $(clicked).attr('contenteditable', true).focus();
         $(clicked).blur(function(){
             $(this).attr('contenteditable', false);
@@ -222,48 +229,35 @@ Template.todoItemCompleted.events({
 
 Template.settings.events({
     'click .theme-toggle': function(event, template){
-
         var token = $(event.currentTarget).data('theme');
         console.log(token);
-
-        var themeSettings = {};
         if(token == 'default'){
             if(('#themeApplied').length){
                 $('#themeApplied').detach();
             }
-
-            themeSettings = {
-                user: Meteor.user()._id,
-                theme: token
-            };
-
-            Meteor.call('updateUser', themeSettings, function(err, response){
-                if(err){
-                    console.log("Error occurred!");
-                }
-            });
         } else {
+
             // Clear if any applied already
             $('#themeApplied').detach();
             var themesheet = $('<link id="themeApplied" href="'+themes[token]+'" rel="stylesheet" />');
             themesheet.appendTo('head');
-
-            themeSettings = {
-                user: Meteor.user()._id,
-                theme: token
-            };
-
-            Meteor.call('updateUser', themeSettings, function(err, response){
-               if(err){
-                   console.log("Error occurred!");
-               }
-            });
         }
+        var themeSettings = {
+            user: Meteor.user()._id,
+            theme: token
+        };
+
+        // Save the new picked theme
+        Meteor.call('updateUser', themeSettings, function(err, response){
+            if(err){
+                console.log("Error occurred!");
+            }
+        });
     },
 
     // Clear the whole collection
     'click #clear': function(){
-        confirm('Are you sure you want to clear all messages ?');
-        Meteor.call('removeItem');
+        var agree = confirm('Are you sure you want to clear all messages?');
+        if(agree) Meteor.call('removeItem');
     }
 });
