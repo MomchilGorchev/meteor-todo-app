@@ -97,15 +97,28 @@ body{
     padding: 10px;
     .spinner {
       display: none;
-      color: white;
       width: 30px;
       height: 30px;
-      background-color: ivory;
-      position: absolute;
+      background-color: black;
+      position: fixed;
       left: 47%;
-      top: 25%;
-      -webkit-animation: rotateplane 1.2s infinite ease-in-out;
-      animation: rotateplane 1.2s infinite ease-in-out;
+      top: 1%;
+      z-index: 9999;
+      -webkit-animation: rotateplane 1.2s 1.5 ease-in-out;
+      animation: rotateplane 1.2s 1.5 ease-in-out;
+      .response-text{
+        display: none;
+        text-align: center;
+        margin-top: 2%;
+        font-size: 2em;
+        font-weight: bold;
+      }
+      .response-text.success{
+        color: darkgreen;
+      }
+      .response-text.failed{
+        color: darkred;
+      }
     }
     ul.loginInfo{
       #login-buttons{

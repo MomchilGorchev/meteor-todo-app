@@ -41,19 +41,17 @@ Template.app.events({
                 orderBy: (moment(dueDate.value, 'DD-MM-YYYY').unix()) + (b * 1024)
             };
 
-
-            $('.spinner').show();
+            // Show loader, initiate the request
+            var spinner = $('.spinner');
+            var newone = spinner.clone(true);
+            spinner.show();
             setTimeout(function(){
                 // Save the item
                 Meteor.call('createItem', newTodo, function(err, response){
                     if(err){
-                        // Notification logic TBD
-                        console.log('error returned');
-                        $('.spinner').hide();
+                        notify(spinner, newone, false);
                     } else {
-                        // Notification logic TBD
-                        console.log('success returned');
-                        $('.spinner').hide();
+                        notify(spinner, newone, true);
                     }
                 });
             }, 2000);
