@@ -6,11 +6,16 @@
 
 
 Messages = new Meteor.Collection("messages");
+
 Meteor.startup(function () {
     //process.env.MAIL_URL =  'smtp://';
 
     Meteor.publish("messages", function(userId){
         return Messages.find({author: this.userId});
+    });
+
+    Meteor.publish('userData', function(){
+       return Meteor.users.find({_id: this.userId}).fetch();
     });
 
     /**

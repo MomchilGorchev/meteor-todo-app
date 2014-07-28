@@ -53,6 +53,8 @@ Template.settings.rendered = function(){
     function drawChart(){
         var notDone = Messages.find({status: 'not-done'}, {sort: {createdAt: -1}}).count();
         var completed = Messages.find({status: 'completed'}, {sort: {createdAt: -1}}).count();
+        console.log(notDone);
+        console.log(completed);
         // Basic chart, read the docs to enhance it
         var chart = c3.generate({
             bindto: '#chart',

@@ -96,9 +96,11 @@ body{
     width: 100%;
     padding: 10px;
     .spinner {
+      display: none;
+      color: white;
       width: 30px;
       height: 30px;
-      background-color: #333;
+      background-color: ivory;
       position: absolute;
       left: 47%;
       top: 25%;

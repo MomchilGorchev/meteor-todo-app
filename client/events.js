@@ -41,13 +41,22 @@ Template.app.events({
                 orderBy: (moment(dueDate.value, 'DD-MM-YYYY').unix()) + (b * 1024)
             };
 
-            // Save the item
-            Meteor.call('createItem', newTodo, function(err, response){
-                if(err){
-                    console.log('error returned');
-                }
-                // Notification logic TBD
-            });
+
+            $('.spinner').show();
+            setTimeout(function(){
+                // Save the item
+                Meteor.call('createItem', newTodo, function(err, response){
+                    if(err){
+                        // Notification logic TBD
+                        console.log('error returned');
+                        $('.spinner').hide();
+                    } else {
+                        // Notification logic TBD
+                        console.log('success returned');
+                        $('.spinner').hide();
+                    }
+                });
+            }, 2000);
             // Clear the field
             $(msg).val('').closest('div').removeClass('has-error');
             $(title).val('');
@@ -228,6 +237,8 @@ Template.todoItemCompleted.events({
 });
 
 Template.settings.events({
+
+    // Theme switch
     'click .theme-toggle': function(event, template){
         var token = $(event.currentTarget).data('theme');
         console.log(token);

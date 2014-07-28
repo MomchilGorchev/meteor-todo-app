@@ -1,12 +1,7 @@
 <head>
-    <title>Momchils TODO</title>
-    <!--<link rel="stylesheet" href="{{myTemplate}}.css">-->
+    <title></title>
 </head>
 
 <template name="mainLayout">
-    {{#if currentUser}}
-        {{> app}}
-    {{else}}
-        {{> notLogged}}
-    {{/if}}
+    {{> yield}}
 </template>
