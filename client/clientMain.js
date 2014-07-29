@@ -49,33 +49,7 @@ Template.addNewItem.rendered = function(){
     });
 };
 
-Template.settings.rendered = function(){
-    function drawChart(){
-        var notDone = Messages.find({status: 'not-done'}, {sort: {createdAt: -1}}).count();
-        var completed = Messages.find({status: 'completed'}, {sort: {createdAt: -1}}).count();
-        console.log(notDone);
-        console.log(completed);
-        // Basic chart, read the docs to enhance it
-        var chart = c3.generate({
-            bindto: '#chart',
-            size: {
-                width: 300,
-                height: 280
-            },
-            data: {
-                // iris data from R
-                columns: [
-                    ['Completed', completed],
-                    ['Not completed', notDone]
-                ],
-                type : 'pie'
-            }
-        });
-        var stats = $('.stats');
-        stats.find('.completed').html(completed);
-        stats.find('.not').html(notDone);
-        stats.find('.total').html(notDone + completed);
-    }
+Template.settings.rendered = function(template){
     Deps.autorun(function (c) {
         drawChart();
     });
