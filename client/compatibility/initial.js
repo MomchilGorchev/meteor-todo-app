@@ -1,7 +1,15 @@
 /**
  * Created by momchillgorchev on 22/07/2014.
  *
- * First JS code to execute
+ * Function Declarations
+ */
+
+/**
+ * Notification handling
+ *
+ * @param spinner - loading image
+ * @param newone - new loader to add after we modify old one
+ * @param result - request response
  */
 function notify(spinner, newone, result){
     if(result){
@@ -44,7 +52,7 @@ function notify(spinner, newone, result){
 }
 
 /**
- * Charts
+ * Charts - Done vs. Not done
  */
 function drawChart(){
     var notDone = Messages.find({status: 'not-done'}, {sort: {createdAt: -1}}).count();
@@ -67,7 +75,7 @@ function drawChart(){
             }
         });
     } else {
-        $('#chart').html('<p class="empty-coll">There is no To-Do items yet!</p>');
+        $('#chart').html('<p class="empty-coll">You do not have anything To-Do!<br /> Get yourself a drink! :)</p>');
     }
     var stats = $('.stats');
     stats.find('.completed').html(completed);

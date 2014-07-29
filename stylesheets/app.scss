@@ -4,7 +4,7 @@
 **/
 
 //
-// This styles need to be modified to mutigate conflicts with the themes stylesheets
+// This styles need to be modified to mitigate conflicts with the themes stylesheets
 //
 @import url(http://fonts.googleapis.com/css?family=Lato|Lobster);
 @import url(http://fonts.googleapis.com/css?family=Bubbler+One);
@@ -240,6 +240,7 @@ body{
       }
     }
     div#tabs, div#tabs-2.row, div#tabs-1.row, div#tabs-3.row{
+      position: relative;
       border: none;
       background: none;
       color: $text-color;
@@ -260,6 +261,25 @@ body{
           text-align: center;
           margin-bottom: 10px;
           margin-right: 10px;
+          .customTooltip{
+            background: ivory;
+            color: $header-background;
+            position: absolute;
+            top: -30px;
+            margin-left: 0%;
+            border-radius: 3px;
+            padding-left: 3px;
+            padding-right: 3px;
+            .arrow{
+              width: 0;
+              height: 0;
+              border-left: 10px solid transparent;
+              border-right: 10px solid transparent;
+              border-top: 10px solid ivory;
+              top: 88%;
+              position: absolute;
+            }
+          }
           i{
             margin-bottom: 5px;
           }
@@ -285,21 +305,6 @@ body{
       .themes{
         background: $header-background;
       }
-      .chart{
-        background: lightgrey;
-        #chart{
-          float: right;
-          width: 300px;
-          height: 280px;
-          margin:0 auto;
-          color: $header-background;
-        }
-        .stats{
-          float: left;
-          margin-top: 10px;
-        }
-      }
-
     }
   }
   .footer, .push {
@@ -457,4 +462,24 @@ body{
   to {
     opacity: 1;
   }
+}
+
+.chart{
+  background: lightgrey;
+  #chart{
+    float: right;
+    width: 300px;
+    height: 280px;
+    margin:0 auto;
+    color: $header-background;
+    font-weight:bold;
+  }
+  .stats{
+    color: $header-background;
+    margin-top: 10px;
+  }
+}
+.empty-coll{
+  margin-top: 10%;
+  margin-left: 10%;
 }

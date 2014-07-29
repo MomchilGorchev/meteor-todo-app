@@ -59,6 +59,14 @@ Template.app.events({
             $(msg).val('').closest('div').removeClass('has-error');
             $(title).val('');
         }
+    },
+    'mouseover .main-nav': function(event, template){
+        var _this = $(event.currentTarget);
+        var token = _this.data('text');
+        _this.find('.customTooltip').html('<span class="arrow"></span>' + token);
+    },
+    'mouseout .main-nav': function(event, template){
+        $(event.currentTarget).find('.customTooltip').empty();
     }
 });
 
@@ -207,6 +215,8 @@ Template.todoItemCompleted.events({
             Meteor.call('removeItem', currentItem, function(err, response){
                 if(err){
                     console.log('err returned');
+                } else {
+
                 }
             });
         }
@@ -267,6 +277,22 @@ Template.settings.events({
     // Clear the whole collection
     'click #clear': function(){
         var agree = confirm('Are you sure you want to clear all messages?');
-        if(agree) Meteor.call('removeItem');
+        if(agree) {
+            var spinner = $('.spinner');
+            var newone = spinner.clone(true);
+            spinner.show();
+            setTimeout(function(){
+                Meteor.call('removeItem', function(err, response){
+                    if(err){
+                        notify(spinner, newone, false);
+                    } else {
+                        notify(spinner, newone, true);
+                    }
+                });
+            }, 2000);
+
+        }
+
+
     }
 });
