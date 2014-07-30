@@ -6,7 +6,6 @@
 
 
 Messages = new Meteor.Collection("messages");
-
 Meteor.startup(function () {
     //process.env.MAIL_URL =  'smtp://';
 

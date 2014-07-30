@@ -18,6 +18,7 @@ $main-background: #A6A59B;
 $text-color: #F3F5F3;
 $button-background: #038C75;
 $button-hover: #C5D6C5;
+$panel-body-color: #f5f5f5;
 
 /**
   Main rules
@@ -136,7 +137,7 @@ body{
         border-radius: 5px;
         width: 260px;
         top: 66px;
-        left: -186px;
+        left: -192px;
         .login-close-text{
           text-decoration: inherit;
           &:hover{
@@ -359,12 +360,14 @@ body{
     }
     .panel-body{
       min-height: 100px;
+      background: $panel-body-color;
       p{
         overflow-wrap: break-word;
         color: $header-background;
       }
     }
     .panel-footer{
+      background: $header-background;
       border-top: 1px solid $header-background;
       display:none;
       a{
@@ -374,7 +377,7 @@ body{
         margin-left:20px;
         color: lightslategray;
         &:hover{
-          color: $header-background;
+          color: $panel-body-color;
         }
       }
     }
@@ -406,6 +409,9 @@ body{
     }
     .panel-footer{
       background: lightgray;
+      i:hover{
+        color: $header-background;
+      }
     }
   }
 }

@@ -5,9 +5,9 @@
  */
 
 Messages = new Meteor.Collection("messages");
+
 Meteor.subscribe('messages');
 Meteor.subscribe('users');
-
 
 Template.headerTemplate.rendered = function(){
     if(Meteor.user()) {

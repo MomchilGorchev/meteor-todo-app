@@ -41,20 +41,14 @@ Template.app.events({
                 orderBy: (moment(dueDate.value, 'DD-MM-YYYY').unix()) + (b * 1024)
             };
 
-            // Show loader, initiate the request
-            var spinner = $('.spinner');
-            var newone = spinner.clone(true);
-            spinner.show();
-            setTimeout(function(){
-                // Save the item
-                Meteor.call('createItem', newTodo, function(err, response){
-                    if(err){
-                        notify(spinner, newone, false);
-                    } else {
-                        notify(spinner, newone, true);
-                    }
-                });
-            }, 2000);
+            // Save the item
+            Meteor.call('createItem', newTodo, function(err, response){
+                if(err){
+                    notify($(event.currentTarget), false);
+                } else {
+                    notify($(event.currentTarget), true);
+                }
+            });
             // Clear the field
             $(msg).val('').closest('div').removeClass('has-error');
             $(title).val('');
@@ -275,24 +269,12 @@ Template.settings.events({
     },
 
     // Clear the whole collection
-    'click #clear': function(){
+    'click #clear': function(e){
         var agree = confirm('Are you sure you want to clear all messages?');
         if(agree) {
-            var spinner = $('.spinner');
-            var newone = spinner.clone(true);
-            spinner.show();
-            setTimeout(function(){
-                Meteor.call('removeItem', function(err, response){
-                    if(err){
-                        notify(spinner, newone, false);
-                    } else {
-                        notify(spinner, newone, true);
-                    }
-                });
-            }, 2000);
-
+            Meteor.call('removeItem', function(err, response){
+                err ? notify($(e.currentTarget), false) : notify($(e.currentTarget), true)
+            });
         }
-
-
     }
 });

@@ -7,48 +7,55 @@
 /**
  * Notification handling
  *
- * @param spinner - loading image
- * @param newone - new loader to add after we modify old one
  * @param result - request response
+ * @param target - clicked button
  */
-function notify(spinner, newone, result){
-    if(result){
-        console.log('success returned');
-        spinner.addClass('success').animate({
-            'background-color': '#d3f1d1',
-            'width': '300px',
-            'height': '50px',
-            'left': '37%',
-            'top': '1%'
-        }, 400, function(){
-            var text = $('<p class="response-text success">Success!</p>');
-            text.appendTo(spinner).fadeIn();
-            setTimeout(function(){
-                spinner.fadeOut(400, function(){
-                    this.remove();
-                });
-                $('.navbar-inner').prepend(newone);
-            }, 2000);
-        });
-    } else {
-        console.log('fail returned');
-        spinner.addClass('failed').animate({
-            'background-color': '#F3C0C0',
-            'width': '300px',
-            'height': '50px',
-            'left': '37%',
-            'top': '1%'
-        }, 400, function(){
-            var text = $('<p class="response-text failed">Error!</p>');
-            text.appendTo(spinner).fadeIn();
-            setTimeout(function(){
-                spinner.fadeOut(400, function(){
-                    this.remove();
-                });
-                $('.navbar-inner').prepend(newone);
-            }, 2000);
-        });
-    }
+function notify(target, result){
+    var spinner = $('.spinner');
+    var newone = spinner.clone(true);
+    spinner.show();
+    target.attr('disabled', 'disabled');
+    setTimeout(function(){
+        if(result){
+            console.log('success returned');
+            spinner.addClass('success').animate({
+                'background-color': '#d3f1d1',
+                'width': '300px',
+                'height': '50px',
+                'left': '37%',
+                'top': '1%'
+            }, 400, function(){
+                var text = $('<p class="response-text success">Success!</p>');
+                text.appendTo(spinner).fadeIn();
+                setTimeout(function(){
+                    spinner.fadeOut(400, function(){
+                        this.remove();
+                    });
+                    $('.navbar-inner').prepend(newone);
+                    target.removeAttr('disabled');
+                }, 2000);
+            });
+        } else {
+            console.log('fail returned');
+            spinner.addClass('failed').animate({
+                'background-color': '#F3C0C0',
+                'width': '300px',
+                'height': '50px',
+                'left': '37%',
+                'top': '1%'
+            }, 400, function(){
+                var text = $('<p class="response-text failed">Error!</p>');
+                text.appendTo(spinner).fadeIn();
+                setTimeout(function(){
+                    spinner.fadeOut(400, function(){
+                        this.remove();
+                    });
+                    $('.navbar-inner').prepend(newone);
+                    target.removeAttr('disabled');
+                }, 2000);
+            });
+        }
+    }, 2000);
 }
 
 /**

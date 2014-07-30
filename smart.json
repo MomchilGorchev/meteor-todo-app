@@ -12,6 +12,7 @@
     "template-animation-helper": {},
     "wait-on-lib": {},
     "modernizr-meteor": {},
-    "c3": {}
+    "c3": {},
+    "pages": {}
   }
 }
