@@ -51,23 +51,28 @@ Meteor.startup(function () {
 
         // Updating any property
         updateCollectionItem: function(data){
-            if(data.token == 'dueDate'){
-                Messages.update(data.itemId, {$set: {dueDate: data.newValue}});
-            }
-            else if(data.token == 'time'){
-                Messages.update(data.itemId, {$set: {time: data.newValue}});
-            }
-            else if(data.token == 'title'){
-                Messages.update(data.itemId, {$set: {title: data.newValue}});
-            }
-            else if(data.token == 'complete'){
-                Messages.update(data.itemId, { $set: {status: 'completed'}});
-            }
-            else if(data.token == 'undo'){
-                Messages.update(data.itemId, { $set: {status: 'not-done'}});
-            }
-            else if(data.token == 'edit'){
-                Messages.update(data.itemId, { $set: {msg: data.newValue}});
+
+            switch(data.token) {
+                case 'dueDate':
+                    Messages.update(data.itemId, {$set: {dueDate: data.newValue}});
+                    break;
+                case 'time':
+                    Messages.update(data.itemId, {$set: {time: data.newValue}});
+                    break;
+                case 'title':
+                    Messages.update(data.itemId, {$set: {title: data.newValue}});
+                    break;
+                case 'complete':
+                    Messages.update(data.itemId, { $set: {status: 'completed'}});
+                    break;
+                case 'undo':
+                    Messages.update(data.itemId, { $set: {status: 'not-done'}});
+                    break;
+                case 'edit':
+                    Messages.update(data.itemId, { $set: {msg: data.newValue}});
+                    break;
+                default:
+                    console.log('Default case for updateCollectionItem method');
             }
         },
 
