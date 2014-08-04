@@ -6,6 +6,7 @@
 
 
 Messages = new Meteor.Collection("messages");
+
 Meteor.startup(function () {
     //process.env.MAIL_URL =  'smtp://';
 
@@ -21,6 +22,13 @@ Meteor.startup(function () {
      * Main methods block
      */
     return Meteor.methods({
+
+        addToLogs: function(logEntry){
+          Logs.insert({
+              date: logEntry.date,
+              name: logEntry.name
+          });
+        },
 
         // Create new item
         createItem: function(newItem){

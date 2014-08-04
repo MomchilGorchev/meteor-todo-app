@@ -40,7 +40,10 @@ Template.app.events({
                 emailToNotify: Meteor.user().emails[0].address,
                 orderBy: (moment(dueDate.value, 'DD-MM-YYYY').unix()) + (b * 1024)
             };
-
+            var logEntry = {
+                date: newTodo.createdAt,
+                name: newTodo.title
+            };
             // Save the item
             Meteor.call('createItem', newTodo, function(err, response){
                 if(err){
@@ -48,6 +51,9 @@ Template.app.events({
                 } else {
                     notify($(event.currentTarget), true);
                 }
+            });
+            Meteor.call('addToLogs', logEntry, function(err, response){
+                err ? console.log('Log error') : console.log('Log success')
             });
             // Clear the field
             $(msg).val('').closest('div').removeClass('has-error');
