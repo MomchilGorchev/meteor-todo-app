@@ -1,19 +1,17 @@
 function compareDates(){
     // Save the time to measure the execution period
-    var start = new Date().getMilliseconds();
-    console.log(' - Loading data...');
-    console.log(' - Compare Dates started...');
+    console.time('Speed test');
     // Fetch all uncompleted items
     var allMessages = Messages.find({status: 'not-done'}).fetch();
     // Create the email counter for later use
     var emailsSent = 0;
     // Get the current time just once, we are matching the day only
     var now = {
-        yy: parseInt(moment().format('YYYY')),
-        mm: parseInt(moment().format('MM')),
-        dd: parseInt(moment().format('DD')),
-        hours: parseInt(moment().format('HH')),
-        mins: parseInt(moment().format('mm'))
+        yy: +moment().format('YYYY'),
+        mm: +moment().format('MM'),
+        dd: +moment().format('DD'),
+        hours: +moment().format('HH'),
+        mins: +moment().format('mm')
     };
     // Iterate over the items array
     for(var i = 0; i < allMessages.length; i++){
@@ -61,12 +59,9 @@ function compareDates(){
         }
     }
     // Stop the watch and print statistics
-    var end = new Date().getMilliseconds();
-    var result = end - start;
     console.log('--==> All Messages: ' + allMessages.length);
     console.log('--==> Emails sent: ' + emailsSent);
-    console.log('--==> Exucution time: ~ ' + result + ' milliseconds');
-    console.log(' - Compare Dates finished execution! - ');
+    console.timeEnd('Speed test');
     console.log('* * * Timestamp: ' + new Date() + ' * * *');
     return emailsSent;
 }

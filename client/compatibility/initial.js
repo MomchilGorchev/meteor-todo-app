@@ -62,6 +62,7 @@ function notify(target, result){
  * Charts - Done vs. Not done
  */
 function drawChart(){
+    // Get the data
     var notDone = Messages.find({status: 'not-done'}, {sort: {createdAt: -1}}).count();
     var completed = Messages.find({status: 'completed'}, {sort: {createdAt: -1}}).count();
     // Basic chart, read the docs to enhance it
@@ -82,8 +83,10 @@ function drawChart(){
             }
         });
     } else {
+        // Empty chart
         $('#chart').html('<p class="empty-coll">You do not have anything To-Do!<br /> Get yourself a drink! :)</p>');
     }
+    // Stats bar
     var stats = $('.stats');
     stats.find('.completed').html(completed);
     stats.find('.not').html(notDone);

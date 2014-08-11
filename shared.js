@@ -3,5 +3,5 @@
  */
 Logs = new Meteor.Collection('logs');
 Pages = new Meteor.Pagination(Logs, {
-    router: 'iron-router'
+    perPage: 5
 });

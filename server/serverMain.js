@@ -48,6 +48,7 @@ Meteor.startup(function () {
             }
         },
 
+
         // Remove item, remove all if Item's id is omitted
         removeItem: function(id){
             if(id == null){
